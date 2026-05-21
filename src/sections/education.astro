@@ -1,0 +1,88 @@
+---
+import {
+  translations,
+  type availableLangsType,
+} from "@/devsync/fields-translations";
+import devsync, { defaultLang } from "@core";
+
+const lang = (
+  Astro.params.lang || defaultLang
+).toLowerCase() as availableLangsType;
+const profile = devsync[lang] ?? devsync[defaultLang];
+const education = profile.education ?? [];
+const translation = translations[lang];
+---
+
+{
+  education.length > 0 && (
+    <section class="relative m-auto w-full max-w-4xl px-6 py-16">
+      <div class="mb-12">
+        <h2 class="mb-2 inline-block rounded bg-accent-light px-3 py-1 text-2xl font-bold lg:text-3xl">
+          {translation["Education"]}
+        </h2>
+      </div>
+
+      <ul class="space-y-6">
+        {education.map(({ name, degree, img, date, links, list }) => (
+          <li class="card group relative overflow-hidden p-6 transition-all duration-300">
+            <div class="absolute left-0 top-0 h-full w-1 bg-accent" />
+
+            <div class="mb-4 flex flex-wrap items-center gap-4">
+              {img && (
+                <img
+                  src={img}
+                  alt={name}
+                  width="48"
+                  height="48"
+                  class="h-12 w-12 rounded-full border border-border object-cover"
+                />
+              )}
+              <div class="flex-1">
+                <h3 class="text-lg font-bold lg:text-xl">{degree}</h3>
+                {name && <span class="text-sm text-accent">{name}</span>}
+              </div>
+              {date && (
+                <span class="rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-text-secondary">
+                  {date}
+                </span>
+              )}
+            </div>
+
+            {list?.items?.length && (
+              <ul class="mb-4 space-y-1.5 pl-4">
+                {list.items.map((item) => (
+                  <li class="text-sm text-text-secondary">
+                    <span class="font-medium text-text">{item.highlight}:</span>{" "}
+                    {item.description}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {links?.length && (
+              <div class="flex flex-wrap gap-2">
+                {links.map((link) => (
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center text-sm font-medium text-text-secondary underline underline-offset-2 transition-colors hover:text-accent"
+                  >
+                    {link.icon && (
+                      <img
+                        src={link.icon}
+                        alt={link.name}
+                        class="mr-1.5 inline h-3.5 w-3.5"
+                      />
+                    )}
+                    {link.name}
+                  </a>
+                ))}
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
