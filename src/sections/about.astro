@@ -1,32 +1,154 @@
 ---
 import devsync from '@core'
 import { defaultLang } from '@core'
-import {
-  translations,
-  type availableLangsType,
-} from '@/devsync/fields-translations'
+import { type availableLangsType } from '@/devsync/fields-translations'
 
 const lang = (
   Astro.params.lang || defaultLang
 ).toLowerCase() as availableLangsType
 const profile = devsync[lang] ?? devsync[defaultLang]
-const translation = translations[lang]
+const fullName = devsync.name ?? 'Unknown'
+const dept = devsync.department ?? 'N/A'
+const loc = devsync.location ?? 'N/A'
+const uuid = [...fullName].reduce(
+  (a, c) => ((a << 5) - a + c.charCodeAt(0)) | 0,
+  0,
+)
+const uuidStr = (Math.abs(uuid) % 0xffffffff).toString(16).padStart(8, '0')
+const fullUuid = `${uuidStr}-${uuidStr.slice(0, 4)}-4${uuidStr.slice(4, 7)}-a${uuidStr.slice(7, 10)}-${uuidStr}`
+const socialIcons = devsync.socialMedia?.slice(0, 3) ?? []
 ---
 
-<section class="m-auto w-full max-w-4xl px-6 py-16">
-  <div class="border-border bg-main overflow-hidden rounded-lg border">
-    <div class="border-border bg-surface-bright border-b px-4 py-3">
-      <h2 class="text-accent font-mono text-sm tracking-widest uppercase">
-        SUMMARY.TXT
-      </h2>
+<section class="about-section relative m-auto w-full max-w-4xl px-6 py-16">
+  <div class="relative grid gap-6 lg:grid-cols-[3fr_2fr]">
+    <div
+      class="border-border bg-main relative h-fit overflow-hidden rounded-lg border"
+    >
+      <div
+        class="border-border flex items-center justify-between border-b px-4 py-2"
+      >
+        <span
+          class="text-accent font-mono text-xs font-bold tracking-wider uppercase"
+        >
+          SUMMARY.TXT
+        </span>
+        <span class="text-text-secondary font-mono text-xs"> SIZE: 1.2KB </span>
+      </div>
+
+      <div class="p-5 font-mono text-sm">
+        <div class="text-text-secondary mb-3">
+          <span class="text-accent">$</span>
+          <span class="ml-2">cat about_me.txt</span>
+        </div>
+
+        <blockquote class="border-accent border-l-2 pl-4 not-italic">
+          <p class="text-text-secondary leading-relaxed">
+            {profile.description}
+          </p>
+        </blockquote>
+
+        <div class="mt-4">
+          <span class="animate-blink text-accent">$</span>
+        </div>
+      </div>
     </div>
 
-    <div class="p-6">
-      <div class="relative border-l-2 border-accent-light pl-4">
-        <p class="text-text-secondary mb-4 text-sm leading-relaxed">
-          {profile.description}
-        </p>
+    <div
+      class="border-border bg-main relative overflow-hidden rounded-lg border"
+    >
+      <div class="flex flex-col items-center p-5">
+        <svg
+          viewBox="0 0 120 100"
+          class="text-text-secondary mb-4 h-24 w-24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="15" y="5" width="90" height="55" rx="3"></rect>
+          <rect
+            x="20"
+            y="10"
+            width="80"
+            height="40"
+            rx="1"
+            fill="currentColor"
+            class="text-main"></rect>
+          <line x1="60" y1="50" x2="60" y2="62"></line>
+          <rect x="45" y="62" width="30" height="4" rx="1"></rect>
+          <rect x="35" y="68" width="50" height="3" rx="1"></rect>
+          <rect x="25" y="73" width="70" height="2" rx="1"></rect>
+          <rect x="25" y="77" width="70" height="2" rx="1"></rect>
+          <rect x="25" y="81" width="70" height="2" rx="1"></rect>
+        </svg>
+
+        <div class="w-full space-y-2 font-mono text-xs">
+          <div class="flex items-start gap-2">
+            <span class="text-accent shrink-0 font-bold">NAME:</span>
+            <span class="text-text-secondary break-all">{fullName}</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-accent shrink-0 font-bold">DEPT:</span>
+            <span class="text-text-secondary break-all">{dept}</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-accent shrink-0 font-bold">LOC:</span>
+            <span class="text-text-secondary break-all">{loc}</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-accent shrink-0 font-bold">UUID:</span>
+            <span class="text-text-secondary font-mono break-all"
+              >{fullUuid}</span
+            >
+          </div>
+        </div>
+
+        <div class="mt-5 flex items-center justify-center gap-4">
+          {
+            socialIcons.map((s) => (
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="border-border hover:border-accent hover:text-accent flex h-7 w-7 items-center justify-center rounded border transition-all duration-300"
+              >
+                <img src={s.icon} alt={s.name} class="h-3.5 w-3.5" />
+              </a>
+            ))
+          }
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .about-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+</style>

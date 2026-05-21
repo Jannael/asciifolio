@@ -89,6 +89,8 @@ const devsyncSchema = z
     img: z.string({ message: 'Image is required' }),
     socialMedia: z.array(linkSchema),
     githubUserName: z.string({ message: 'GitHub username is required' }),
+    department: z.string().optional(),
+    location: z.string().optional(),
   })
   .catchall(devsyncObjectSchema.deepPartial())
 

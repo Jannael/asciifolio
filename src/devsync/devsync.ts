@@ -11,6 +11,8 @@ export const devsyncGlobalFields = [
   'site',
   'githubUserName',
   'defaultLang',
+  'department',
+  'location',
 ] as const
 
 export const languages = Object.keys(devsync).filter(
