@@ -42,10 +42,10 @@ const socialMedia = devsync.socialMedia ?? []
     </div>
 
     <div class="terminal-content border-border border p-8">
-      <div class="relative">
+      <div class="relative flex items-center justify-between">
         {
           devsync.img && (
-            <div class="absolute top-0 right-0 z-10">
+            <div class="absolute top-0 right-0 z-10 mr-15">
               <div class="relative">
                 <div class="bg-accent/30 absolute -inset-1 rounded-full blur-md" />
                 <img
@@ -63,7 +63,7 @@ const socialMedia = devsync.socialMedia ?? []
 
         <div
           class="overflow-x-auto"
-          style={`min-height: ${asciiLines.length * 1.5}rem;`}
+          style={`min-height: ${asciiLines.length * 1.2}rem;`}
         >
           <AsciiFigure class="text-accent sm:text-lg md:text-xl">
             <AsciiScramble lines={asciiLines} />
