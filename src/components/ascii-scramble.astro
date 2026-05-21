@@ -12,17 +12,15 @@ const {
   batchSize = 5,
   delay = 1,
 } = Astro.props
-
-const maxLen = Math.max(...lines.map((line) => line.length))
-const paddedLines = lines.map((line) => line.padEnd(maxLen, ' '))
-const initialText = paddedLines.join('\n')
 ---
 
-<pre class="ascii-scramble text-accent" id="asciiArt" set:html={initialText} />
+<pre class="ascii-scramble text-accent" id="asciiArt"></pre>
 
-<script define:vars={{ lines: paddedLines, scrambleChars, batchSize, delay }}>
+<script define:vars={{ lines, scrambleChars, batchSize, delay }}>
   const container = document.getElementById('asciiArt')
-  if (!container) return
+
+  const maxLen = Math.max(...lines.map((line) => line.length))
+  const paddedLines = lines.map((line) => line.padEnd(maxLen, ' '))
 
   let displayLines = paddedLines.map((line) =>
     line
@@ -65,13 +63,13 @@ const initialText = paddedLines.join('\n')
     }
   }
 
+  updateDisplay()
   setTimeout(animate, delay)
 </script>
 
 <style>
   .ascii-scramble {
     display: inline-block;
-    font-family: 'JetBrains Mono Variable', monospace;
     font-size: inherit;
     line-height: 1;
     letter-spacing: 0;
@@ -92,7 +90,5 @@ const initialText = paddedLines.join('\n')
     text-shadow:
       0 0 10px var(--color-shadow-accent),
       0 0 20px var(--color-shadow-accent);
-    margin: 0;
-    min-width: 100%;
   }
 </style>
