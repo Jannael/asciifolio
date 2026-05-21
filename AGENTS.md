@@ -48,13 +48,22 @@ Translation keys live in `fields-translations.ts` — add new keys to both `en` 
 
 ## CSS / Theming
 
-Tailwind 4 custom theme vars in `global.css`:
+Tailwind 4 custom theme vars in `global.css` (Cyber-Noir Terminal palette):
 
-- `--color-main`, `--color-text`, `--color-text-secondary`, `--color-accent`, `--color-accent-light`, `--color-border`
+- `--color-main` (#121414), `--color-text` (#e1e3e3), `--color-text-secondary` (#bfc8c8)
+- `--color-accent` (#00ff41), `--color-accent-light` (#005313), `--color-shadow-accent` (#00ff41)
+- `--color-border` (#3f4949), `--color-surface-bright`, `--color-surface-container`
 
-Dark mode: `.dark` class on `<html>`, persisted in `localStorage`, respects `prefers-color-scheme`.
-Custom classes: `.highlight`, `.text-gradient`, `.card`, `.timeline-line`, `.timeline-dot`, `.section-divider`.
-Icons in `/icons/` are auto-themed via CSS `filter: brightness(0)` / `invert(1)` in dark mode.
+Dark mode: `.dark` class on `<html>`, persisted in `localStorage`, respects `prefers-color-scheme`. Same palette in both modes (always dark terminal aesthetic).
+
+Custom classes:
+- `.terminal-window` — bordered container with CRT glow
+- `.terminal-header` — top bar (e.g. `C:\DEV\PORTFOLIO.EXE`)
+- `.terminal-content` — padded content with scanline overlay via `::before`
+- `.highlight`, `.text-gradient`, `.card`, `.timeline-line`, `.timeline-dot`, `.section-divider`
+- `.terminal-cursor::after` — blinking cursor animation
+
+Icons in `/icons/` are auto-themed via CSS `filter: brightness(0) invert(0.88)`.
 
 ## Component Patterns
 
@@ -86,6 +95,25 @@ All schemas in `devsync-validator.ts`. `devsyncSchema` uses `.catchall(devsyncOb
 ## SEO
 
 Layout auto-generates: canonical URL, OG tags, Twitter cards, JSON-LD (Person + WebSite graph). Requires `site` in `DEVSYNC.json` or `astro.config.mjs` for correct canonicals. OG image: `/logo-og.png` (1254x1254).
+
+## Hero Section (Cyber-Noir Terminal)
+
+Uses `figlet` (build-time) + `<AsciiScramble>` (client-side animation):
+
+```astro
+import figlet from 'figlet'
+import AsciiScramble from '@/components/ascii-scramble.astro'
+
+const asciiArt = await figlet.text(firstName, {
+  font: 'ANSI Regular',
+  width: 80,
+  whitespaceBreak: true,
+})
+const asciiLines = asciiArt.split('\n')
+```
+
+Layout: terminal window → ASCII art (left) + profile photo (right) → job title → social badges → status badge.
+All data from DEVSYNC.json — status uses `profile.status?.status`, badges use `devsync.socialMedia`.
 
 ## Conventions
 
