@@ -13,24 +13,33 @@ const projects = profile.projects ?? []
 const translation = translations[lang]
 
 const titleText = translation['Projects']
-const asciiTitle = figlet.textSync(titleText, {
-  font: 'ANSI Regular',
-  width: 80,
-  whitespaceBreak: true,
-})
+const asciiTitle = figlet
+  .textSync(titleText, {
+    font: 'ANSI Regular',
+    width: 80,
+    whitespaceBreak: true,
+  })
+  .trimStart()
 ---
 
 {
   projects.length > 0 && (
     <section id="projects" class="relative m-auto w-full max-w-4xl px-6 py-16">
-      <pre
-        class="text-accent mb-12 origin-top-left scale-[0.55] p-4 font-mono text-xs sm:scale-75 md:scale-100"
-        set:html={asciiTitle}
-      />
+      <div class="border-border mb-12 flex items-end justify-between border-b pb-4">
+        <div>
+          <pre
+            class="text-accent font-mono text-xl tracking-widest"
+            set:html={asciiTitle}
+          />
+        </div>
+        <span class="text-text-secondary/50 font-mono text-xs">
+          {projects.length} project{projects.length > 1 ? 's' : ''}
+        </span>
+      </div>
 
-      <div class="list-none columns-1 gap-6 md:columns-2">
-        {projects.map((project, i) => (
-          <ProjectCard {...project} featured={i === 0} />
+      <div class="space-y-12">
+        {projects.map((project) => (
+          <ProjectCard {...project} />
         ))}
       </div>
     </section>

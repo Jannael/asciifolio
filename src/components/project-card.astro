@@ -22,107 +22,92 @@ interface Props {
     mdBadge?: string
     icon?: string
   }[]
-  featured?: boolean
 }
 
-const { name, img, web, links, description, list, skills, featured } =
-  Astro.props
-
-const headerPid = String(Math.floor(Math.random() * 9000 + 1000))
+const { name, img, web, links, description, list, skills } = Astro.props
 ---
 
-<li style="break-inside: avoid;" class="mb-6">
-  <article class="border-border border font-mono">
-    <div
-      class="border-border flex items-center justify-between border-b px-4 py-2"
-    >
-      <span class="text-text-secondary text-xs tracking-wide uppercase">
-        C:\SRC\{name?.toUpperCase() ?? 'PROJECT'}.EXE
-      </span>
+<div class="border-border group bg-main/30 relative border p-6">
+  <div class="mb-4 flex flex-wrap items-start justify-between gap-4">
+    <div class="flex-1">
+      <h3 class="text-text text-xl font-bold lg:text-2xl">
+        {name}
+      </h3>
+      {
+        web && (
+          <a
+            href={web}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-text-secondary/60 hover:text-accent font-mono text-xs transition-colors"
+          >
+            {web.replace(/^https?:\/\//, '')}
+          </a>
+        )
+      }
+      {
+        links?.length && (
+          <div class="mt-3 flex flex-wrap gap-3">
+            {links.map((link) => (
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="border-text-secondary/40 hover:border-accent hover:text-accent inline-flex items-center gap-1.5 border px-3 py-1.5 text-xs font-medium tracking-wide uppercase transition-colors"
+              >
+                {link.name}
+                <span class="text-accent/60">↗</span>
+              </a>
+            ))}
+          </div>
+        )
+      }
     </div>
+    {
+      img && (
+        <img
+          src={img}
+          alt={name ?? 'Project preview'}
+          class="border-border h-20 w-20 rounded-lg border object-cover opacity-60 transition-opacity group-hover:opacity-90"
+          width="80"
+          height="80"
+        />
+      )
+    }
+  </div>
 
-    <div class="p-4">
-      <div class={featured ? 'md:flex md:gap-6' : ''}>
-        {
-          img && (
-            <div
-              class={`relative overflow-hidden ${featured ? 'md:w-1/2 md:shrink-0' : 'mb-4'}`}
-            >
-              <img
-                src={img}
-                alt={name ?? 'Project preview'}
-                class="h-48 w-full object-cover"
-                width="800"
-                height="450"
-              />
-              <div class="absolute inset-0 flex flex-col justify-end bg-black/60 p-3">
-                <span class="text-accent text-[10px] leading-tight">
-                  [RUNNING] pid: {headerPid}
-                </span>
-                <span class="text-accent text-[10px] leading-tight">
-                  [SCANNING] /dev/sda
-                </span>
-                <span class="text-accent text-[10px] leading-tight">
-                  [OK] {name?.toUpperCase() ?? 'PROJECT'}_v1.0
-                </span>
-              </div>
+  {
+    description && (
+      <p class="text-text-secondary mb-6 text-sm leading-relaxed">
+        {description}
+      </p>
+    )
+  }
+
+  {
+    list?.items?.length ? (
+      <div class="mb-6 grid gap-4 sm:grid-cols-2">
+        {list.items.map((item) => (
+          <div class="border-border bg-main/50 border p-4">
+            <div class="text-accent mb-2 font-mono text-xs">
+              {'>>'} {item.highlight}
             </div>
-          )
-        }
-
-        <div class={featured ? 'md:flex-1' : ''}>
-          <h3 class="mb-2 text-lg font-bold">{name}</h3>
-
-          {
-            description && (
-              <p class="text-text-secondary mb-4 text-sm leading-relaxed">
-                {description}
+            {item.description && (
+              <p class="text-text-secondary text-xs leading-relaxed">
+                {item.description}
               </p>
-            )
-          }
-
-          {
-            list?.items?.length ? (
-              <div class="mb-4 space-y-1">
-                {list.items.map((item) => (
-                  <div class="text-text-secondary text-xs">
-                    {item.highlight}
-                  </div>
-                ))}
-              </div>
-            ) : null
-          }
-
-          {
-            links?.length ? (
-              <div class="mb-4 flex flex-wrap gap-2">
-                {links.map((link) => (
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="border-text-secondary/30 hover:border-accent hover:text-accent inline-block border px-3 py-1 text-[10px] font-medium tracking-wider uppercase transition-colors"
-                  >
-                    {link.name} ↗
-                  </a>
-                ))}
-              </div>
-            ) : null
-          }
-
-          {
-            skills?.length ? (
-              <div class="flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                  <span class="border-text-secondary/30 inline-block border px-2 py-0.5 text-[10px] tracking-wider uppercase">
-                    {skill.name}
-                  </span>
-                ))}
-              </div>
-            ) : null
-          }
-        </div>
+            )}
+          </div>
+        ))}
       </div>
-    </div>
-  </article>
-</li>
+    ) : null
+  }
+
+  {
+    skills?.length && (
+      <span class="text-text-secondary/50 font-mono text-xs">
+        STACK: {skills.map((s) => s.name).join(' · ')}
+      </span>
+    )
+  }
+</div>
