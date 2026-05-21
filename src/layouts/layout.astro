@@ -2,7 +2,6 @@
 import devsync from '@core'
 import { defaultLang } from '@core'
 import '@/styles/global.css'
-import Navbar from '@/components/navbar.astro'
 import Footer from '@/sections/footer.astro'
 import '@fontsource-variable/jetbrains-mono/wght.css'
 import { ogLocale } from '@/devsync/fields-translations'
@@ -82,11 +81,6 @@ const structuredData = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="canonical" href={canonicalUrl} />
-    <link
-      rel="preload"
-      as="style"
-      href="/@fontsource-variable/jetbrains-mono/wght.css"
-    />
     <link
       rel="icon"
       href="/favicon-32x32.svg"
