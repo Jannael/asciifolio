@@ -2,6 +2,7 @@
 import devsync from '@core'
 import { defaultLang } from '@core'
 import { translations, type availableLangsType } from '@core'
+import SectionHeader from '@/components/section-header.astro'
 
 const lang = (
   Astro.params.lang || defaultLang
@@ -13,16 +14,8 @@ const translation = translations[lang]
 
 {
   experience.length > 0 && (
-    <section id="experience" class="m-auto w-full max-w-4xl px-6">
-      <div class="mb-8 flex items-center justify-between">
-        <span class="text-accent font-mono text-xs font-bold tracking-widest uppercase">
-          {translation['SYSTEM_LOG']}: {translation['Experience']}
-        </span>
-        <span class="text-text-secondary/50 font-mono text-xs uppercase">
-          {translation['FILTER']}: {translation['ALL_TIME']}
-        </span>
-      </div>
-      <hr class="border-border mb-8" />
+    <section id="experience" class="m-auto w-full max-w-4xl px-6 py-16">
+      <SectionHeader title={translation['Experience']} />
 
       <ul>
         {experience.map((exp, i) => (

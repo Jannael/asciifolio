@@ -1,6 +1,7 @@
 ---
 import { translations, type availableLangsType } from '@core'
 import devsync, { defaultLang } from '@core'
+import SectionHeader from '@/components/section-header.astro'
 
 const lang = (
   Astro.params.lang || defaultLang
@@ -12,17 +13,8 @@ const translation = translations[lang]
 
 {
   certifications.length > 0 && (
-    <section id="certifications" class="m-auto w-full max-w-4xl px-6">
-      <div class="border-accent mb-8 border-t-2 bg-main/50 px-4 py-3">
-        <div class="flex items-center justify-between">
-          <span class="text-accent font-mono text-sm font-bold tracking-wider uppercase">
-            {translation['SYSTEM_LOG']}: {translation['Certifications']}
-          </span>
-          <span class="text-text-secondary/50 font-mono text-xs uppercase">
-            {translation['FILTER']}: {translation['ALL_TIME']}
-          </span>
-        </div>
-      </div>
+    <section id="certifications" class="m-auto w-full max-w-4xl px-6 py-16">
+      <SectionHeader title={translation['Certifications']} />
 
       <ul>
         {certifications.map((cert, i) => (
@@ -31,9 +23,7 @@ const translation = translations[lang]
               <div class="mb-2 flex items-start justify-between">
                 <div class="flex items-center gap-2">
                   <span class="text-accent text-sm">■</span>
-                  <h3 class="text-accent text-lg font-bold">
-                    {cert.name}
-                  </h3>
+                  <h3 class="text-accent text-lg font-bold">{cert.name}</h3>
                 </div>
                 {cert.url && (
                   <a
@@ -80,7 +70,9 @@ const translation = translations[lang]
               )}
             </div>
 
-            {i < certifications.length - 1 && <hr class="border-border/30 my-6" />}
+            {i < certifications.length - 1 && (
+              <hr class="border-border/30 my-6" />
+            )}
           </li>
         ))}
       </ul>
