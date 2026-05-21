@@ -83,6 +83,11 @@ const structuredData = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="canonical" href={canonicalUrl} />
     <link
+      rel="preload"
+      as="style"
+      href="/@fontsource-variable/jetbrains-mono/wght.css"
+    />
+    <link
       rel="icon"
       href="/favicon-32x32.svg"
       sizes="32x32"
@@ -164,8 +169,7 @@ const structuredData = {
     </script>
   </head>
   <body class="max-w-9xl bg-main text-text m-auto min-h-screen">
-    <Navbar />
-    <main class="min-h-[calc(100vh-120px)]">
+    <main>
       <slot />
     </main>
     <Footer />
