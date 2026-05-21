@@ -18,7 +18,7 @@ import { z } from 'zod'
 const categorySchema = z.object({
   id: z.string(),
   name: z.string(),
-  children: z.array(categorySchema),  // Error: Block-scoped variable used before declaration
+  children: z.array(categorySchema), // Error: Block-scoped variable used before declaration
 })
 ```
 
@@ -122,7 +122,7 @@ const jsonValueSchema: z.ZodType<JSONValue> = z.lazy(() =>
     z.null(),
     z.array(jsonValueSchema),
     z.record(jsonValueSchema),
-  ])
+  ]),
 )
 ```
 
@@ -137,6 +137,7 @@ const jsonValueSchema: z.ZodType<JSONValue> = z.lazy(() =>
 ```
 
 **When NOT to use this pattern:**
+
 - Non-recursive schemas (lazy adds unnecessary indirection)
 - When you can flatten the structure instead
 

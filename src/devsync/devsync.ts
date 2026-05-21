@@ -14,7 +14,8 @@ export const devsyncGlobalFields = [
 ] as const
 
 export const languages = Object.keys(devsync).filter(
-  (key) => !devsyncGlobalFields.includes(key as (typeof devsyncGlobalFields)[number])
+  (key) =>
+    !devsyncGlobalFields.includes(key as (typeof devsyncGlobalFields)[number]),
 )
 export const defaultLang = devsync.defaultLang
 

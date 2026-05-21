@@ -30,6 +30,7 @@ src/
 ```
 
 **Path aliases** (`tsconfig.json`):
+
 - `@/*` → `src/*`
 - `@core` → `src/devsync/devsync`
 
@@ -48,6 +49,7 @@ Translation keys live in `fields-translations.ts` — add new keys to both `en` 
 ## CSS / Theming
 
 Tailwind 4 custom theme vars in `global.css`:
+
 - `--color-main`, `--color-text`, `--color-text-secondary`, `--color-accent`, `--color-accent-light`, `--color-border`
 
 Dark mode: `.dark` class on `<html>`, persisted in `localStorage`, respects `prefers-color-scheme`.
@@ -57,13 +59,16 @@ Icons in `/icons/` are auto-themed via CSS `filter: brightness(0)` / `invert(1)`
 ## Component Patterns
 
 **Frontmatter boilerplate**:
+
 ```astro
 ---
 import devsync from '@core'
 import { defaultLang } from '@core'
 import type { availableLangsType } from '@/devsync/fields-translations'
 
-const lang = (Astro.params.lang || defaultLang).toLowerCase() as availableLangsType
+const lang = (
+  Astro.params.lang || defaultLang
+).toLowerCase() as availableLangsType
 const profile = devsync[lang] ?? devsync[defaultLang]
 ---
 ```

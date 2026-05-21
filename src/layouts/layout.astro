@@ -1,59 +1,59 @@
 ---
-import devsync from "@core";
-import { defaultLang } from "@core";
-import "@/styles/global.css";
-import Navbar from "@/components/navbar.astro";
-import Footer from "@/sections/footer.astro";
-import "@fontsource-variable/jetbrains-mono/wght.css";
-import { ogLocale } from "@/devsync/fields-translations";
+import devsync from '@core'
+import { defaultLang } from '@core'
+import '@/styles/global.css'
+import Navbar from '@/components/navbar.astro'
+import Footer from '@/sections/footer.astro'
+import '@fontsource-variable/jetbrains-mono/wght.css'
+import { ogLocale } from '@/devsync/fields-translations'
 
 interface Props {
-  title?: string;
-  description?: string;
+  title?: string
+  description?: string
 }
 
-const lang = (Astro.params.lang || defaultLang).toLowerCase();
-const profile = devsync[lang] ?? devsync[defaultLang];
+const lang = (Astro.params.lang || defaultLang).toLowerCase()
+const profile = devsync[lang] ?? devsync[defaultLang]
 
 // Build dynamic SEO from DEVSYNC.json data
 const seoTitle = profile?.jobTitle
   ? `${devsync.name} | ${profile.jobTitle}`
-  : devsync.name;
+  : devsync.name
 
 const seoDescription =
-  profile?.description?.split(". ").slice(0, 2).join(". ") ||
-  profile?.description;
+  profile?.description?.split('. ').slice(0, 2).join('. ') ||
+  profile?.description
 
 // Extract social links for structured data
 const socialLinks = [
   `https://github.com/${devsync.githubUserName}`,
   ...(devsync.socialMedia?.map((s) => s.url) || []),
-].filter(Boolean);
+].filter(Boolean)
 
 if (!Astro.site && !devsync.site) {
   console.warn(`
 		[devsync] No site URL configured!
     Add 'site' to astro.config.mjs to fix canonical and OG tags.
-  `);
+  `)
 }
 
 const site =
-  Astro.site ?? new URL(devsync.site ?? "https://devsync.work").toString();
-const canonicalUrl = new URL(Astro.url.pathname, site).toString();
-const ogImageUrl = new URL("/logo-og.jpg", site).toString();
-const ogImageAlt = `${devsync.name} - ${profile?.jobTitle || "Professional Profile"}`;
-const homeUrl = new URL("/", site).toString();
-const websiteId = `${homeUrl}#website`;
-const personId = `${homeUrl}#person`;
+  Astro.site ?? new URL(devsync.site ?? 'https://devsync.work').toString()
+const canonicalUrl = new URL(Astro.url.pathname, site).toString()
+const ogImageUrl = new URL('/logo-og.jpg', site).toString()
+const ogImageAlt = `${devsync.name} - ${profile?.jobTitle || 'Professional Profile'}`
+const homeUrl = new URL('/', site).toString()
+const websiteId = `${homeUrl}#website`
+const personId = `${homeUrl}#person`
 
-const { title = seoTitle, description = seoDescription } = Astro.props;
+const { title = seoTitle, description = seoDescription } = Astro.props
 
 const structuredData = {
-  "@context": "https://schema.org",
-  "@graph": [
+  '@context': 'https://schema.org',
+  '@graph': [
     {
-      "@type": "Person",
-      "@id": personId,
+      '@type': 'Person',
+      '@id': personId,
       name: devsync.name,
       jobTitle: profile?.jobTitle,
       description: profile?.description,
@@ -62,18 +62,18 @@ const structuredData = {
       sameAs: socialLinks,
     },
     {
-      "@type": "WebSite",
-      "@id": websiteId,
+      '@type': 'WebSite',
+      '@id': websiteId,
       url: homeUrl,
       name: seoTitle,
       description,
       inLanguage: lang,
       publisher: {
-        "@id": personId,
+        '@id': personId,
       },
     },
   ],
-};
+}
 ---
 
 <!doctype html>
@@ -146,25 +146,21 @@ const structuredData = {
     />
 
     <script>
-      const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
-      const hasStoredTheme = () => localStorage.getItem("theme") !== null;
+      const matchMedia = window.matchMedia('(prefers-color-scheme: dark)')
+      const hasStoredTheme = () => localStorage.getItem('theme') !== null
       const getTheme = () =>
-        localStorage.getItem("theme") ??
-        (matchMedia.matches ? "dark" : "light");
+        localStorage.getItem('theme') ?? (matchMedia.matches ? 'dark' : 'light')
       const applyTheme = () => {
-        document.documentElement.classList.toggle(
-          "dark",
-          getTheme() === "dark",
-        );
-      };
+        document.documentElement.classList.toggle('dark', getTheme() === 'dark')
+      }
 
-      applyTheme();
+      applyTheme()
 
-      matchMedia.addEventListener("change", () => {
+      matchMedia.addEventListener('change', () => {
         if (!hasStoredTheme()) {
-          applyTheme();
+          applyTheme()
         }
-      });
+      })
     </script>
   </head>
   <body class="max-w-9xl bg-main text-text m-auto min-h-screen">
@@ -177,7 +173,7 @@ const structuredData = {
 
   <style is:global>
     html {
-      font-family: "JetBrains Mono Variable", monospace;
+      font-family: 'JetBrains Mono Variable', monospace;
     }
   </style>
 </html>

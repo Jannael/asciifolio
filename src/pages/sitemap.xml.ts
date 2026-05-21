@@ -3,7 +3,14 @@ import type { APIRoute } from 'astro'
 interface SitemapEntry {
   url: string
   lastModified?: string
-  changeFrequency?: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
+  changeFrequency?:
+    | 'always'
+    | 'hourly'
+    | 'daily'
+    | 'weekly'
+    | 'monthly'
+    | 'yearly'
+    | 'never'
   priority?: number
 }
 
@@ -35,7 +42,7 @@ export const GET: APIRoute = async ({ site }) => {
     <lastmod>${page.lastModified}</lastmod>
     <changefreq>${page.changeFrequency}</changefreq>
     <priority>${page.priority}</priority>
-  </url>`
+  </url>`,
     )
     .join('\n')}
 </urlset>`
