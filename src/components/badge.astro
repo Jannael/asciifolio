@@ -3,9 +3,10 @@ interface Props {
   name: string
   url: string
   icon: string
+  class?: string
 }
 
-const { name, url, icon } = Astro.props
+const { name, url, icon, class: className = '' } = Astro.props
 ---
 
 <li class="group list-none">
@@ -13,7 +14,7 @@ const { name, url, icon } = Astro.props
     href={url}
     target="_blank"
     rel="noopener noreferrer"
-    class="border-border bg-main hover:border-accent hover:text-accent inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium transition-all duration-300"
+    class={`border-border bg-main hover:border-accent hover:text-accent inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium transition-all duration-300 ${className}`}
   >
     <img src={icon} alt={name} class="h-4 w-4" width="16" height="16" />
     {name && <span>{name}</span>}
