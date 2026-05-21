@@ -78,20 +78,22 @@ const socialMedia = devsync.socialMedia ?? []
           {profile.jobTitle}
         </h2>
 
-        <div class="mt-6 flex flex-wrap items-center gap-3">
-          {
-            socialMedia.map((social) => (
-              <Badge name={social.name} url={social.url} icon={social.icon} />
-            ))
-          }
-          <Badge
-            name={translation['CV']}
-            url={'/CV-' + lang + '.pdf'}
-            icon="/icons/cv.svg"
-          />
+        <div class="mt-6 flex items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-3">
+            {
+              socialMedia.map((social) => (
+                <Badge name={social.name} url={social.url} icon={social.icon} />
+              ))
+            }
+            <Badge
+              name={translation['CV']}
+              url={'/CV-' + lang + '.pdf'}
+              icon="/icons/cv.svg"
+            />
+          </div>
           {
             profile.status?.status && (
-              <span class="border-accent/40 text-accent items-center gap-2 self-end rounded border px-4 py-2 font-mono text-xs tracking-wider uppercase">
+              <span class="border-accent/40 text-accent flex shrink-0 items-center gap-2 rounded border px-4 py-2 font-mono text-xs tracking-wider uppercase">
                 <span class="bg-accent inline-block h-2 w-2 animate-pulse rounded-full shadow-[0_0_10px_var(--color-accent)]" />
                 {translation['Status']}: {profile.status.status}
               </span>
