@@ -31,7 +31,7 @@ const { name, img, web, links, description, list, skills, featured } =
 const headerPid = String(Math.floor(Math.random() * 9000 + 1000))
 ---
 
-<li class={featured ? 'md:col-span-2' : ''} style="list-style: none;">
+<li style="break-inside: avoid;" class="mb-6">
   <article class="border-border border font-mono">
     <div
       class="border-border flex items-center justify-between border-b px-4 py-2"

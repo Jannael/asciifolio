@@ -15,6 +15,8 @@ const translation = translations[lang]
 const titleText = translation['Projects']
 const asciiTitle = figlet.textSync(titleText, {
   font: 'ANSI Regular',
+  horizontalLayout: 'default',
+  verticalLayout: 'default',
   width: 80,
   whitespaceBreak: true,
 })
@@ -23,11 +25,11 @@ const asciiTitle = figlet.textSync(titleText, {
 {
   projects.length > 0 && (
     <section id="projects" class="relative m-auto w-full max-w-4xl px-6 py-16">
-      <pre class="from-accent to-text mb-12 bg-gradient-to-r bg-clip-text p-4 font-mono text-xs leading-tight text-transparent">
+      <pre class="from-accent to-text mb-12 bg-linear-to-r bg-clip-text p-4 font-mono text-xs leading-tight text-transparent">
         {asciiTitle}
       </pre>
 
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div class="list-none columns-1 gap-6 md:columns-2">
         {projects.map((project, i) => (
           <ProjectCard {...project} featured={i === 0} />
         ))}
