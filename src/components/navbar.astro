@@ -5,8 +5,6 @@ import {
   translations,
   type availableLangsType,
 } from '@/devsync/fields-translations'
-import LangSwitcher from '@/sections/lang-switcher.astro'
-import ThemeSwitcher from '@/sections/theme-switcher.astro'
 
 const lang = (
   Astro.params.lang || defaultLang
@@ -49,11 +47,6 @@ const firstName = fullName.split(' ')[0]
       >
         {translation['Projects']}
       </a>
-    </div>
-
-    <div class="flex items-center gap-3">
-      <LangSwitcher currentLang={Astro.params.lang || 'en'} class="mb-0" />
-      <ThemeSwitcher />
     </div>
   </div>
 </nav>

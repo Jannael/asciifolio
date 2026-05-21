@@ -6,6 +6,8 @@ import devsync from '@core'
 import { defaultLang } from '@core'
 import { type availableLangsType } from '@/devsync/fields-translations'
 import figlet from 'figlet'
+import LangSwitcher from '@/sections/lang-switcher.astro'
+import ThemeSwitcher from '@/sections/theme-switcher.astro'
 
 const lang = (
   Astro.params.lang || defaultLang
@@ -26,15 +28,19 @@ const socialMedia = devsync.socialMedia ?? []
 ---
 
 <section class="m-auto mt-10 w-full max-w-4xl px-6">
-  <div class="terminal-window border-border border">
+  <div class="terminal-window rounded-xl">
     <div
-      class="bg-surface-bright border-border text-text-secondary flex items-center gap-2 border-b px-4 py-3 text-xs select-none"
+      class="bg-surface-bright border-border text-text-secondary flex items-center gap-2 rounded-tl-xl rounded-tr-xl border-b px-4 py-3 text-xs select-none"
     >
       <span class="text-accent font-bold">&gt;</span>
       <span class="flex-1">C:\DEV\PORTFOLIO.EXE</span>
+      <div class="flex items-center gap-2">
+        <LangSwitcher currentLang={lang} class="text-xs" />
+        <ThemeSwitcher />
+      </div>
     </div>
 
-    <div class="relative p-8">
+    <div class="terminal-content p-8">
       <div class="relative">
         {
           devsync.img && (

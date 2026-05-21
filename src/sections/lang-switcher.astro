@@ -13,7 +13,7 @@ const { currentLang = defaultLang, class: className } = Astro.props
   languages.length > 1 && (
     <nav
       aria-label="Language selector"
-      class={`${className ?? ''} border-border bg-main flex items-center gap-1 rounded-lg border p-1`}
+      class={`${className ?? ''} border-border bg-main flex items-center gap-1 rounded border p-1`}
     >
       {languages.map((lang) => {
         const isActive = lang === currentLang
