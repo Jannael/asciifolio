@@ -6,10 +6,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "prettier --write .",
+    "fmt:check": "prettier --check ."
   },
   "dependencies": {
-    "@fontsource-variable/jost": "5.2.8",
+    "@fontsource-variable/jetbrains-mono": "5.2.8",
     "@fontsource-variable/roboto": "5.2.10",
     "@tailwindcss/vite": "4.2.4",
     "astro": "6.1.9",
@@ -21,5 +25,11 @@
   },
   "devsync": {
     "pathToCompiledCV": "./dist/[lang]/cv/index.html"
+  },
+  "devDependencies": {
+    "oxlint": "1.65.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.8.0"
   }
 }

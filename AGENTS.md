@@ -7,10 +7,12 @@ Astro 6 static site generator for multilingual portfolio/profile pages. Tailwind
 ## Commands
 
 ```bash
-pnpm run dev        # Dev server
-pnpm run build      # Production build (only verification step — no lint/test)
-pnpm run preview    # Preview build output
-pnpm run astro      # Direct Astro CLI access
+bun run dev        # Dev server
+bun run build      # Production build (only verification step — no lint/test)
+bun run preview    # Preview build output
+bun run astro      # Direct Astro CLI access
+bun run format     # Prettier (single quotes, no semi, Tailwind class sort)
+bun run format:check      # Check formatting without writing
 ```
 
 CI auto-generates CV/README/LinkedIn artifacts on every `DEVSYNC.json` push via `bunx @jannael/devsync build`.
