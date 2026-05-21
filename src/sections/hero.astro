@@ -24,7 +24,7 @@ const asciiArt = await figlet.text(firstName, {
   whitespaceBreak: true,
 })
 
-const asciiLines = asciiArt.split('\n')
+const asciiLines = asciiArt.split('\n').filter((line) => line.trim() !== '')
 const socialMedia = devsync.socialMedia ?? []
 ---
 
@@ -42,10 +42,18 @@ const socialMedia = devsync.socialMedia ?? []
     </div>
 
     <div class="terminal-content border-border border p-8">
-      <div class="relative flex items-center justify-between">
+      <div class="relative mb-5 flex items-center justify-between gap-4">
+        <div
+          class="flex-1 overflow-x-hidden overflow-y-hidden"
+          style={`min-height: ${asciiLines.length * 1}rem;`}
+        >
+          <AsciiFigure class="text-accent sm:text-lg md:text-xl">
+            <AsciiScramble lines={asciiLines} />
+          </AsciiFigure>
+        </div>
         {
           devsync.img && (
-            <div class="absolute top-0 right-0 z-10 mr-15">
+            <div class="shrink-0">
               <div class="relative">
                 <div class="bg-accent/30 absolute -inset-1 rounded-full blur-md" />
                 <img
@@ -60,15 +68,6 @@ const socialMedia = devsync.socialMedia ?? []
             </div>
           )
         }
-
-        <div
-          class="overflow-x-auto"
-          style={`min-height: ${asciiLines.length * 1.2}rem;`}
-        >
-          <AsciiFigure class="text-accent sm:text-lg md:text-xl">
-            <AsciiScramble lines={asciiLines} />
-          </AsciiFigure>
-        </div>
       </div>
 
       <div class="border-border/50 border-t border-dashed pt-6">
