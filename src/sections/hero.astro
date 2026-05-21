@@ -1,12 +1,10 @@
 ---
 import Badge from '@/components/badge.astro'
+import AsciiFigure from '@/components/ascii-figure.astro'
 import AsciiScramble from '@/components/ascii-scramble.astro'
 import devsync from '@core'
 import { defaultLang } from '@core'
-import {
-  translations,
-  type availableLangsType,
-} from '@/devsync/fields-translations'
+import { type availableLangsType } from '@/devsync/fields-translations'
 import figlet from 'figlet'
 
 const lang = (
@@ -60,11 +58,9 @@ const socialMedia = devsync.socialMedia ?? []
           class="overflow-x-auto"
           style={`min-height: ${asciiLines.length * 1.5}rem;`}
         >
-          <figure
-            class="ascii-figure text-accent inline-block text-base leading-none sm:text-lg md:text-xl"
-          >
+          <AsciiFigure class="text-accent sm:text-lg md:text-xl">
             <AsciiScramble lines={asciiLines} />
-          </figure>
+          </AsciiFigure>
         </div>
       </div>
 

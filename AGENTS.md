@@ -60,7 +60,6 @@ Custom CSS classes (only for complex styles that can't be Tailwind utilities):
 
 - `.terminal-window` — bordered container with CRT glow (complex `box-shadow` with `color-mix`)
 - `.terminal-content` — scanline overlay via `::before` (pseudo-element)
-- `.ascii-figure` — ASCII art font rendering (complex font-feature-settings)
 - `.nav-logo` — logo filter color (complex `filter` math)
 - `.terminal-cursor::after` — blinking cursor animation
 
