@@ -58,18 +58,6 @@ Dark mode: `.dark` class on `<html>`, persisted in `localStorage`, respects `pre
 
 Custom CSS classes (only for complex styles that can't be Tailwind utilities):
 
-- `.terminal-window` — bordered container with CRT glow (complex `box-shadow` with `color-mix`)
-- `.terminal-content` — scanline overlay via `::before` (pseudo-element)
-- `.nav-logo` — logo filter color (complex `filter` math)
-- `.terminal-cursor::after` — blinking cursor animation
-
-Tailwind utility equivalents for removed classes:
-
-- `.terminal-header` → `bg-surface-bright border-b border-border px-4 py-3 text-xs text-text-secondary flex items-center gap-2 select-none`
-- `.card` → `border border-border rounded-xl bg-main hover:border-accent`
-- `.section-divider` → `h-0.5 bg-accent opacity-60`
-- `.highlight` → `bg-accent-light px-1 rounded-sm`
-
 Icons in `/icons/` are auto-themed via custom selector `img[src^='/icons/']` filter rules.
 
 ## Component Patterns

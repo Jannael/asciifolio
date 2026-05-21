@@ -26,7 +26,7 @@ const socialMedia = devsync.socialMedia ?? []
 ---
 
 <section class="m-auto mt-10 w-full max-w-4xl px-6">
-  <div class="terminal-window">
+  <div class="terminal-window border-border border">
     <div
       class="bg-surface-bright border-border text-text-secondary flex items-center gap-2 border-b px-4 py-3 text-xs select-none"
     >
@@ -34,7 +34,7 @@ const socialMedia = devsync.socialMedia ?? []
       <span class="flex-1">C:\DEV\PORTFOLIO.EXE</span>
     </div>
 
-    <div class="terminal-content p-8">
+    <div class="relative p-8">
       <div class="relative">
         {
           devsync.img && (
@@ -94,3 +94,11 @@ const socialMedia = devsync.socialMedia ?? []
     </div>
   </div>
 </section>
+
+<style>
+  .terminal-window {
+    box-shadow:
+      0 0 30px color-mix(in srgb, var(--color-accent) 15%, transparent),
+      inset 0 0 80px color-mix(in srgb, var(--color-accent) 5%, transparent);
+  }
+</style>
