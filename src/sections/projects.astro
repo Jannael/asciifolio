@@ -23,9 +23,10 @@ const asciiTitle = figlet.textSync(titleText, {
 {
   projects.length > 0 && (
     <section id="projects" class="relative m-auto w-full max-w-4xl px-6 py-16">
-      <pre class="text-accent scale-[0.5] p-4 font-mono text-xs sm:scale-100">
-        {asciiTitle}
-      </pre>
+      <pre
+        class="text-accent mb-12 origin-top-left scale-[0.55] p-4 font-mono text-xs sm:scale-75 md:scale-100"
+        set:html={asciiTitle}
+      />
 
       <div class="list-none columns-1 gap-6 md:columns-2">
         {projects.map((project, i) => (
