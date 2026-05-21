@@ -13,7 +13,6 @@ const lang = (
   Astro.params.lang || defaultLang
 ).toLowerCase() as availableLangsType
 const profile = devsync[lang] ?? devsync[defaultLang]
-const translation = translations[lang]
 const firstName = devsync.name?.split(' ')[0] || 'DEV'
 
 const asciiArt = await figlet.text(firstName, {
@@ -30,12 +29,14 @@ const socialMedia = devsync.socialMedia ?? []
 
 <section class="m-auto mt-10 w-full max-w-4xl px-6">
   <div class="terminal-window">
-    <div class="terminal-header">
+    <div
+      class="bg-surface-bright border-border text-text-secondary flex items-center gap-2 border-b px-4 py-3 text-xs select-none"
+    >
       <span class="text-accent font-bold">&gt;</span>
       <span class="flex-1">C:\DEV\PORTFOLIO.EXE</span>
     </div>
 
-    <div class="terminal-content">
+    <div class="terminal-content p-8">
       <div class="relative">
         {
           devsync.img && (
@@ -56,15 +57,13 @@ const socialMedia = devsync.socialMedia ?? []
         }
 
         <div
-          class="ascii-container"
+          class="overflow-x-auto"
           style={`min-height: ${asciiLines.length * 1.5}rem;`}
         >
           <figure
-            class="text-accent inline-block text-base leading-none sm:text-lg md:text-xl"
+            class="ascii-figure text-accent inline-block text-base leading-none sm:text-lg md:text-xl"
           >
-            <AsciiScramble
-              lines={asciiLines}
-            />
+            <AsciiScramble lines={asciiLines} />
           </figure>
         </div>
       </div>

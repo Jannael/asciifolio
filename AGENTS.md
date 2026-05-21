@@ -56,14 +56,22 @@ Tailwind 4 custom theme vars in `global.css` (Cyber-Noir Terminal palette):
 
 Dark mode: `.dark` class on `<html>`, persisted in `localStorage`, respects `prefers-color-scheme`. Same palette in both modes (always dark terminal aesthetic).
 
-Custom classes:
-- `.terminal-window` — bordered container with CRT glow
-- `.terminal-header` — top bar (e.g. `C:\DEV\PORTFOLIO.EXE`)
-- `.terminal-content` — padded content with scanline overlay via `::before`
-- `.highlight`, `.text-gradient`, `.card`, `.timeline-line`, `.timeline-dot`, `.section-divider`
+Custom CSS classes (only for complex styles that can't be Tailwind utilities):
+
+- `.terminal-window` — bordered container with CRT glow (complex `box-shadow` with `color-mix`)
+- `.terminal-content` — scanline overlay via `::before` (pseudo-element)
+- `.ascii-figure` — ASCII art font rendering (complex font-feature-settings)
+- `.nav-logo` — logo filter color (complex `filter` math)
 - `.terminal-cursor::after` — blinking cursor animation
 
-Icons in `/icons/` are auto-themed via CSS `filter: brightness(0) invert(0.88)`.
+Tailwind utility equivalents for removed classes:
+
+- `.terminal-header` → `bg-surface-bright border-b border-border px-4 py-3 text-xs text-text-secondary flex items-center gap-2 select-none`
+- `.card` → `border border-border rounded-xl bg-main hover:border-accent`
+- `.section-divider` → `h-0.5 bg-accent opacity-60`
+- `.highlight` → `bg-accent-light px-1 rounded-sm`
+
+Icons in `/icons/` are auto-themed via custom selector `img[src^='/icons/']` filter rules.
 
 ## Component Patterns
 
@@ -100,7 +108,7 @@ Layout auto-generates: canonical URL, OG tags, Twitter cards, JSON-LD (Person + 
 
 Uses `figlet` (build-time) + `<AsciiScramble>` (client-side animation):
 
-```astro
+```typescript
 import figlet from 'figlet'
 import AsciiScramble from '@/components/ascii-scramble.astro'
 
