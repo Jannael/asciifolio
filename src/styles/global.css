@@ -1,26 +1,111 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-main: #ffffff;
-  --color-text: #1a1a1a;
-  --color-text-secondary: #6b7280;
-  --color-accent: #338e5e;
-  --color-accent-light: #e6f4ec;
-  --color-border: #e5e7eb;
+  --color-main: #121414;
+  --color-text: #e1e3e3;
+  --color-text-secondary: #bfc8c8;
+  --color-accent: #00ff41;
+  --color-accent-light: #005313;
+  --color-shadow-accent: #00ff41;
+  --color-border: #3f4949;
+  --color-surface-bright: #383939;
+  --color-surface-container: #212424;
+  --color-on-primary: #00390a;
+  --color-secondary: #b3cbaf;
+  --color-error: #ffb4ab;
 }
 
 .dark {
-  --color-main: #0f0f0f;
-  --color-text: #f5f5f5;
-  --color-text-secondary: #9ca3af;
-  --color-accent: #4ade80;
-  --color-accent-light: #1a2e22;
-  --color-border: #2a2a2a;
+  --color-main: #121414;
+  --color-text: #e1e3e3;
+  --color-text-secondary: #bfc8c8;
+  --color-accent: #00ff41;
+  --color-accent-light: #005313;
+  --color-shadow-accent: #00ff41;
+  --color-border: #3f4949;
+  --color-surface-bright: #383939;
+  --color-surface-container: #212424;
+  --color-on-primary: #00390a;
+  --color-secondary: #b3cbaf;
+  --color-error: #ffb4ab;
 }
 
 body {
   background: var(--color-main);
   min-height: 100vh;
+}
+
+.terminal-window {
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: var(--color-surface-container);
+  overflow: hidden;
+  box-shadow:
+    0 0 30px color-mix(in srgb, var(--color-accent) 15%, transparent),
+    inset 0 0 80px color-mix(in srgb, var(--color-accent) 5%, transparent);
+}
+
+.terminal-header {
+  background: var(--color-surface-bright);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+.terminal-content {
+  padding: 2rem;
+  position: relative;
+}
+
+.terminal-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    color-mix(in srgb, var(--color-main) 40%, transparent) 2px,
+    color-mix(in srgb, var(--color-main) 40%, transparent) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+.terminal-content > * {
+  position: relative;
+  z-index: 10;
+}
+
+.ascii-container {
+  overflow-x: auto;
+}
+
+.ascii-container figure {
+  margin: 0;
+  white-space: pre;
+  font-family: 'JetBrains Mono Variable', monospace;
+  font-size: inherit;
+  line-height: 1;
+  letter-spacing: 0;
+  word-spacing: 0;
+  font-variant-ligatures: none;
+  font-variant-numeric: tabular-nums;
+  font-kerning: none;
+  font-feature-settings:
+    'kern' 0,
+    'liga' 0,
+    'dlig' 0,
+    'hlig' 0,
+    'clig' 0;
+  text-rendering: geometricPrecision;
+  text-indent: 0;
 }
 
 .section-divider {
@@ -72,7 +157,7 @@ body {
 }
 
 img[src^='/icons/'] {
-  filter: brightness(0);
+  filter: brightness(0) invert(0.88);
 }
 
 .dark img[src^='/icons/'] {
@@ -80,7 +165,7 @@ img[src^='/icons/'] {
 }
 
 img[src^='https://cdn.simpleicons.org/'] {
-  filter: brightness(0);
+  filter: brightness(0) invert(0.88);
 }
 
 .dark img[src^='https://cdn.simpleicons.org/'] {
@@ -98,4 +183,21 @@ img[src^='https://cdn.simpleicons.org/'] {
 .dark .nav-logo {
   filter: brightness(0) saturate(100%) invert(77%) sepia(51%) saturate(468%)
     hue-rotate(92deg) brightness(96%) contrast(89%);
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.terminal-cursor::after {
+  content: '▋';
+  animation: blink 1s step-end infinite;
+  color: var(--color-accent);
+  margin-left: 0.25rem;
 }

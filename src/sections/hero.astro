@@ -1,63 +1,101 @@
 ---
 import Badge from '@/components/badge.astro'
+import AsciiScramble from '@/components/ascii-scramble.astro'
 import devsync from '@core'
 import { defaultLang } from '@core'
+import {
+  translations,
+  type availableLangsType,
+} from '@/devsync/fields-translations'
+import figlet from 'figlet'
 
-const lang = (Astro.params.lang || defaultLang).toLowerCase()
+const lang = (
+  Astro.params.lang || defaultLang
+).toLowerCase() as availableLangsType
 const profile = devsync[lang] ?? devsync[defaultLang]
-const firstName = devsync.name?.split(' ')[0]
+const translation = translations[lang]
+const firstName = devsync.name?.split(' ')[0] || 'DEV'
+
+const asciiArt = await figlet.text(firstName, {
+  font: 'ANSI Regular',
+  horizontalLayout: 'default',
+  verticalLayout: 'default',
+  width: 80,
+  whitespaceBreak: true,
+})
+
+const asciiLines = asciiArt.split('\n')
+const socialMedia = devsync.socialMedia ?? []
 ---
 
-<section class="relative m-auto w-full max-w-4xl px-6 py-16 lg:py-24">
-  <div
-    class="flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-12 lg:gap-16"
-  >
-    <div class="relative shrink-0">
-      {
-        devsync.img && devsync.img.length > 1 && (
-          <div class="relative">
-            <img
-              src={devsync.img}
-              alt={devsync.name}
-              class="border-accent relative z-10 h-32 w-32 rounded-full border-2 object-cover lg:h-40 lg:w-40"
-              width="160"
-              height="160"
-              loading="eager"
-            />
-            <div class="bg-accent-light text-accent absolute -top-4 -right-4 z-20 rotate-12 rounded px-3 py-1 text-xs font-bold shadow-sm">
-              {firstName}
-            </div>
-          </div>
-        )
-      }
+<section class="m-auto mt-10 w-full max-w-4xl px-6">
+  <div class="terminal-window">
+    <div class="terminal-header">
+      <span class="text-accent font-bold">&gt;</span>
+      <span class="flex-1">C:\DEV\PORTFOLIO.EXE</span>
     </div>
 
-    <div class="flex-1 md:text-left">
-      <div class="mx-auto max-w-lg md:mx-0">
-        <h1 class="mb-3 text-4xl font-extrabold tracking-tight lg:text-6xl">
-          {devsync.name}
-        </h1>
-        <h2 class="mb-4 text-xl font-medium lg:text-2xl">
-          <span class="highlight">{profile.jobTitle}</span>
-        </h2>
-        <p
-          class="text-text-secondary mb-8 text-base leading-relaxed lg:text-lg"
+    <div class="terminal-content">
+      <div class="relative">
+        {
+          devsync.img && (
+            <div class="absolute top-0 right-0 z-10">
+              <div class="relative">
+                <div class="bg-accent/30 absolute -inset-1 rounded-full blur-md" />
+                <img
+                  src={devsync.img}
+                  alt={devsync.name}
+                  class="border-accent relative z-10 h-20 w-20 rounded-full border-2 object-cover sm:h-24 sm:w-24"
+                  width="96"
+                  height="96"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          )
+        }
+
+        <div
+          class="ascii-container"
+          style={`min-height: ${asciiLines.length * 1.5}rem;`}
         >
-          {profile.description}
-        </p>
+          <figure
+            class="text-accent inline-block text-base leading-none sm:text-lg md:text-xl"
+          >
+            <AsciiScramble
+              lines={asciiLines}
+              scrambleChars="█▓▒░─═┬┴┤├┴┬┼╔╦╗╠╬╣╚╩╝║╬"
+              delay={0}
+              batchSize={8}
+            />
+          </figure>
+        </div>
+      </div>
+
+      <div class="border-border/50 border-t border-dashed pt-6">
+        <h2
+          class="text-text-secondary font-mono text-sm tracking-[0.2em] uppercase sm:text-base"
+        >
+          {profile.jobTitle}
+        </h2>
+
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          {
+            socialMedia.map((social) => (
+              <Badge name={social.name} url={social.url} icon={social.icon} />
+            ))
+          }
+          <Badge name="CV" url={'/CV-' + lang + '.pdf'} icon="/icons/cv.svg" />
+        </div>
 
         {
-          devsync.socialMedia && devsync.socialMedia.length > 0 && (
-            <ul class="flex flex-wrap items-center gap-3">
-              {devsync.socialMedia.map((social) => (
-                <Badge name={social.name} url={social.url} icon={social.icon} />
-              ))}
-              <Badge
-                name="CV"
-                url={'/CV-' + lang + '.pdf'}
-                icon="/icons/cv.svg"
-              />
-            </ul>
+          profile.status?.status && (
+            <div class="mt-6 flex justify-end">
+              <span class="border-accent/40 text-accent inline-flex items-center gap-2 rounded border px-4 py-2 font-mono text-xs tracking-wider uppercase">
+                <span class="bg-accent inline-block h-2 w-2 animate-pulse rounded-full shadow-[0_0_10px_var(--color-accent)]" />
+                STATUS: {profile.status.status}
+              </span>
+            </div>
           )
         }
       </div>
