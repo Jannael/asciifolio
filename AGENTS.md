@@ -68,7 +68,7 @@ Icons in `/icons/` are auto-themed via custom selector `img[src^='/icons/']` fil
 ---
 import devsync from '@core'
 import { defaultLang } from '@core'
-import type { availableLangsType } from '@/devsync/fields-translations'
+import type { availableLangsType } from '@core'
 
 const lang = (
   Astro.params.lang || defaultLang
