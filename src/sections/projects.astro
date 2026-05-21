@@ -1,5 +1,4 @@
 ---
-import figlet from 'figlet'
 import devsync from '@core'
 import { defaultLang } from '@core'
 import { translations, type availableLangsType } from '@core'
@@ -11,31 +10,20 @@ const lang = (
 const profile = devsync[lang] ?? devsync[defaultLang]
 const projects = profile.projects ?? []
 const translation = translations[lang]
-
-const titleText = translation['Projects']
-const asciiTitle = figlet
-  .textSync(titleText, {
-    font: 'ANSI Regular',
-    width: 80,
-    whitespaceBreak: true,
-  })
-  .trimStart()
 ---
 
 {
   projects.length > 0 && (
-    <section id="projects" class="relative m-auto w-full max-w-4xl px-6 py-16">
-      <div class="border-border mb-12 flex items-end justify-between border-b pb-4">
-        <div>
-          <pre
-            class="text-accent font-mono text-xl tracking-widest"
-            set:html={asciiTitle}
-          />
-        </div>
-        <span class="text-text-secondary/50 font-mono text-xs">
-          {projects.length} project{projects.length > 1 ? 's' : ''}
+    <section id="projects" class="m-auto mt-15 w-full max-w-4xl px-6">
+      <div class="mb-8 flex items-center justify-between">
+        <span class="text-accent font-mono text-xs font-bold tracking-widest uppercase">
+          {translation['SYSTEM_LOG']}: {translation['Projects']}
+        </span>
+        <span class="text-text-secondary/50 font-mono text-xs uppercase">
+          {translation['FILTER']}: {translation['ALL_TIME']}
         </span>
       </div>
+      <hr class="border-border mb-8" />
 
       <div class="space-y-12">
         {projects.map((project) => (
