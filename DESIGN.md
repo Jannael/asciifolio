@@ -51,16 +51,73 @@ margin: 24px
 gutter: 16px
 unit: 8px
 
-Cyber-Noir Terminal Design System
+---
 
-A high-contrast, terminal-inspired design system optimized for developers and systems engineers.
+# Cyber-Noir Terminal Design System
 
-Visual Identity
+## Visual Identity
 
-Palette: Matrix-inspired green (#00ff41) on deep charcoal and black backgrounds.
+- **Palette**: Matrix-inspired green (`#00ff41`) on deep charcoal and black backgrounds
+- **Typography**: JetBrains Mono throughout — reinforces CLI aesthetic
+- **Metaphor**: "System log", "executable", and "terminal output" patterns for content organization
+- **Effects**: Subtle scanlines and CRT flicker for retro authenticity
 
-Typography: Mono-spaced hierarchy using JetBrains Mono to reinforce the command-line interface aesthetic.
+## Section Header Pattern
 
-Components: Framed by ASCII borders and structural lines, using "system log" and "executable" metaphors for content organization.
+All sections use a consistent terminal-style header:
 
-Effects: Subtle scanlines and CRT flicker animations for an authentic retro feel.
+```
+SYSTEM_LOG: SECTION_NAME                                    FILTER: ALL_TIME
+────────────────────────────────────────────────────────────────────────────
+```
+
+Implementation:
+
+- `SYSTEM_LOG` + section name in `text-accent font-mono text-xs font-bold tracking-widest uppercase`
+- Right-aligned `FILTER: ALL_TIME` in `text-text-secondary/50`
+- `<hr class="border-border">` separator below
+
+## Experience Section
+
+- Left border accent (`border-l-2 border-accent/30`) per entry
+- `■` bullet + position in accent, company after `@`
+- Date in brackets `[MM/YY - Present]`
+- Achievement boxes: grid layout with `>> ACHIEVEMENT_N` header
+- STACK line: monospace, skills joined by `·`
+- Entries separated by `<hr class="border-border/30">`
+
+## Projects Section
+
+- Same header pattern as Experience
+- Cards with full border (`border-border border bg-main/30 p-6`)
+- Layout: title + URL + links (as bordered buttons) on left, thumbnail on right
+- Highlights: 2-column grid boxes with `>> highlight` prefix
+- STACK line at bottom in monospace
+- Hover: left border illuminates (`hover:border-accent`)
+
+## Education Section
+
+- Same header pattern as Experience
+- Left border accent (`border-l-2 border-accent/30`) per entry
+- `■` bullet + degree in accent, institution after `@`
+- Date in brackets `[YYYY - Present]`
+- Highlights: 2-column grid boxes with `>> HIGHLIGHT` prefix
+- Links: underline style with `↗` arrow
+- Entries separated by `<hr class="border-border/30">`
+
+## Certifications Section
+
+- Same header pattern as Experience
+- Left border accent (`border-l-2 border-accent/30`) per entry
+- `■` bullet + cert name in accent
+- "View Certificate" button on right
+- Highlights: 2-column grid boxes
+- Skills: monospace STACK line
+
+## Component Rules
+
+- **No border-radius** on new elements (terminal aesthetic)
+- **Monospace** for metadata (dates, labels, stack)
+- **Accent color** (`#00ff41`) for interactive/hover states
+- **Border separators** (`border-border`) for visual hierarchy
+- **`space-y-*`** for vertical rhythm between entries
