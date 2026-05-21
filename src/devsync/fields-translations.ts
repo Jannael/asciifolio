@@ -13,6 +13,7 @@ export const translations = {
     Certifications: 'Certifications',
     'Core Skills': 'Core Skills',
     credential: 'Credential',
+    About: 'About',
 
     academics: 'Academics',
     'View Certificate': 'View Certificate',
@@ -36,6 +37,7 @@ export const translations = {
     Certifications: 'Certificaciones',
     'Core Skills': 'Habilidades principales',
     credential: 'Credencial',
+    About: 'Sobre mí',
 
     academics: 'Historial académico',
     'View Certificate': 'Ver certificado',

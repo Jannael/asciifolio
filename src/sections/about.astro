@@ -1,0 +1,32 @@
+---
+import devsync from '@core'
+import { defaultLang } from '@core'
+import {
+  translations,
+  type availableLangsType,
+} from '@/devsync/fields-translations'
+
+const lang = (
+  Astro.params.lang || defaultLang
+).toLowerCase() as availableLangsType
+const profile = devsync[lang] ?? devsync[defaultLang]
+const translation = translations[lang]
+---
+
+<section class="m-auto w-full max-w-4xl px-6 py-16">
+  <div class="border-border bg-main overflow-hidden rounded-lg border">
+    <div class="border-border bg-surface-bright border-b px-4 py-3">
+      <h2 class="text-accent font-mono text-sm tracking-widest uppercase">
+        SUMMARY.TXT
+      </h2>
+    </div>
+
+    <div class="p-6">
+      <div class="relative border-l-2 border-accent-light pl-4">
+        <p class="text-text-secondary mb-4 text-sm leading-relaxed">
+          {profile.description}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
