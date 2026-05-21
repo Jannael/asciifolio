@@ -22,89 +22,107 @@ interface Props {
     mdBadge?: string
     icon?: string
   }[]
+  featured?: boolean
 }
 
-const { name, img, web, links, description, list, skills } = Astro.props
+const { name, img, web, links, description, list, skills, featured } =
+  Astro.props
+
+const headerPid = String(Math.floor(Math.random() * 9000 + 1000))
 ---
 
-<li class="group">
-  <article
-    class="border-border bg-main hover:border-accent flex h-full flex-col overflow-hidden rounded-xl border transition-all duration-300"
-  >
-    {
-      img && (
-        <a
-          href={web ?? '#'}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block overflow-hidden"
-        >
-          <img
-            src={img}
-            alt={name ?? 'Project preview'}
-            class="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            width="800"
-            height="450"
-          />
-        </a>
-      )
-    }
+<li class={featured ? 'md:col-span-2' : ''} style="list-style: none;">
+  <article class="border-border border font-mono">
+    <div
+      class="border-border flex items-center justify-between border-b px-4 py-2"
+    >
+      <span class="text-text-secondary text-xs tracking-wide uppercase">
+        C:\SRC\{name?.toUpperCase() ?? 'PROJECT'}.EXE
+      </span>
+    </div>
 
-    <div class="flex flex-1 flex-col p-6">
-      <div class="flex-1">
-        {name && <h3 class="mb-3 text-xl font-bold">{name}</h3>}
-
+    <div class="p-4">
+      <div class={featured ? 'md:flex md:gap-6' : ''}>
         {
-          description && (
-            <p class="text-text-secondary mb-4 text-sm leading-relaxed">
-              {description}
-            </p>
+          img && (
+            <div
+              class={`relative overflow-hidden ${featured ? 'md:w-1/2 md:shrink-0' : 'mb-4'}`}
+            >
+              <img
+                src={img}
+                alt={name ?? 'Project preview'}
+                class="h-48 w-full object-cover"
+                width="800"
+                height="450"
+              />
+              <div class="absolute inset-0 flex flex-col justify-end bg-black/60 p-3">
+                <span class="text-accent text-[10px] leading-tight">
+                  [RUNNING] pid: {headerPid}
+                </span>
+                <span class="text-accent text-[10px] leading-tight">
+                  [SCANNING] /dev/sda
+                </span>
+                <span class="text-accent text-[10px] leading-tight">
+                  [OK] {name?.toUpperCase() ?? 'PROJECT'}_v1.0
+                </span>
+              </div>
+            </div>
           )
         }
+
+        <div class={featured ? 'md:flex-1' : ''}>
+          <h3 class="mb-2 text-lg font-bold">{name}</h3>
+
+          {
+            description && (
+              <p class="text-text-secondary mb-4 text-sm leading-relaxed">
+                {description}
+              </p>
+            )
+          }
+
+          {
+            list?.items?.length ? (
+              <div class="mb-4 space-y-1">
+                {list.items.map((item) => (
+                  <div class="text-text-secondary text-xs">
+                    {item.highlight}
+                  </div>
+                ))}
+              </div>
+            ) : null
+          }
+
+          {
+            links?.length ? (
+              <div class="mb-4 flex flex-wrap gap-2">
+                {links.map((link) => (
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="border-text-secondary/30 hover:border-accent hover:text-accent inline-block border px-3 py-1 text-[10px] font-medium tracking-wider uppercase transition-colors"
+                  >
+                    {link.name} ↗
+                  </a>
+                ))}
+              </div>
+            ) : null
+          }
+
+          {
+            skills?.length ? (
+              <div class="flex flex-wrap gap-2">
+                {skills.map((skill) => (
+                  <span class="border-text-secondary/30 inline-block border px-2 py-0.5 text-[10px] tracking-wider uppercase">
+                    {skill.name}
+                  </span>
+                ))}
+              </div>
+            ) : null
+          }
+        </div>
       </div>
-
-      {
-        links?.length && (
-          <div class="mb-4 flex flex-wrap gap-2">
-            {links.map((link) => (
-              <a
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="border-border bg-main hover:border-accent hover:text-accent inline-flex items-center rounded-lg border px-3 py-1.5 text-xs font-medium transition-all duration-300"
-              >
-                {link.icon && (
-                  <img
-                    src={link.icon}
-                    alt={link.name}
-                    class="mr-1.5 inline h-3.5 w-3.5 shrink-0"
-                  />
-                )}
-                {link.name}
-              </a>
-            ))}
-          </div>
-        )
-      }
-
-      {
-        skills?.length && (
-          <div class="flex flex-wrap gap-2">
-            {skills.map((skill) => (
-              <span class="border-border bg-main inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-medium">
-                {skill.icon && (
-                  <img
-                    src={skill.icon}
-                    alt={skill.name}
-                    class="mr-1.5 inline h-3 w-3 shrink-0"
-                  />
-                )}
-                {skill.name}
-              </span>
-            ))}
-          </div>
-        )
-      }
     </div>
   </article>
 </li>
