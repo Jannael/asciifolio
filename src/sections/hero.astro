@@ -84,7 +84,7 @@ const socialMedia = devsync.socialMedia ?? []
           class="mt-6 flex items-center justify-between gap-3 max-sm:w-full max-sm:flex-col max-sm:items-center"
         >
           <div
-            class="flex flex-wrap items-center gap-3 max-sm:w-full max-sm:max-w-70 max-sm:flex-col"
+            class="flex w-full flex-col flex-wrap items-center gap-5 sm:flex-row sm:gap-3"
           >
             {
               socialMedia.map((social) => (
@@ -92,7 +92,7 @@ const socialMedia = devsync.socialMedia ?? []
                   name={social.name}
                   url={social.url}
                   icon={social.icon}
-                  class="max-sm:w-full max-sm:justify-center"
+                  class="flex w-full items-center justify-center"
                 />
               ))
             }
@@ -100,12 +100,12 @@ const socialMedia = devsync.socialMedia ?? []
               name={translation['CV']}
               url={'/CV-' + lang + '.pdf'}
               icon="/icons/cv.svg"
-              class="max-sm:w-full max-sm:justify-center"
+              class="flex w-full items-center justify-center"
             />
           </div>
           {
             profile.status?.status && (
-              <span class="border-accent/40 text-accent flex shrink-0 items-center gap-2 rounded border px-4 py-2 font-mono text-xs tracking-wider uppercase max-sm:w-full max-sm:max-w-70 max-sm:justify-center">
+              <span class="border-accent/40 text-accent flex w-full shrink-0 items-center justify-center gap-2 rounded border px-4 py-2 font-mono text-xs tracking-wider uppercase sm:w-auto">
                 <span class="bg-accent inline-block h-2 w-2 animate-pulse rounded-full shadow-[0_0_10px_var(--color-accent)]" />
                 {translation['Status']}: {profile.status.status}
               </span>
