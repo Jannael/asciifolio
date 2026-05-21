@@ -43,27 +43,26 @@ const socialMedia = devsync.socialMedia ?? []
       </div>
     </div>
 
-    <div class="terminal-content border-border border p-4 sm:p-8">
+    <div class="terminal-content border-border border px-4 py-6 sm:p-8">
       <div
-        class="relative mb-5 flex items-center justify-between gap-4 max-sm:flex-col max-sm:items-center"
+        class="relative mb-5 flex items-center justify-between gap-4 max-sm:flex max-sm:w-full max-sm:flex-col max-sm:items-center max-sm:gap-1"
       >
         <div
-          class="flex-1 overflow-x-hidden overflow-y-hidden"
-          style={`min-height: ${asciiLines.length * 1}rem;`}
+          class="scale-0.5 flex flex-1 items-center justify-center overflow-x-hidden overflow-y-hidden max-sm:w-full max-sm:max-w-full sm:justify-start"
         >
-          <AsciiFigure class="text-accent sm:text-lg md:text-xl">
+          <AsciiFigure class="text-accent scale-[0.5] sm:scale-100">
             <AsciiScramble lines={asciiLines} />
           </AsciiFigure>
         </div>
         {
           devsync.img && (
-            <div class="shrink-0">
+            <div class="shrink-0 max-sm:-order-1 max-sm:mb-1">
               <div class="relative">
                 <div class="bg-accent/30 absolute -inset-1 rounded-full blur-md" />
                 <img
                   src={devsync.img}
                   alt={devsync.name}
-                  class="border-accent relative z-10 h-20 w-20 rounded-full border-2 object-cover sm:h-24 sm:w-24"
+                  class="border-accent relative z-10 h-20 w-20 rounded-full border-2 object-cover max-sm:h-24 max-sm:w-24 sm:h-28 sm:w-28"
                   width="96"
                   height="96"
                   loading="eager"
@@ -82,10 +81,10 @@ const socialMedia = devsync.socialMedia ?? []
         </h2>
 
         <div
-          class="mt-6 flex items-center justify-between gap-3 max-sm:flex-col max-sm:items-stretch"
+          class="mt-6 flex items-center justify-between gap-3 max-sm:w-full max-sm:flex-col max-sm:items-center"
         >
           <div
-            class="flex flex-wrap items-center gap-3 max-sm:w-full max-sm:flex-col"
+            class="flex flex-wrap items-center gap-3 max-sm:w-full max-sm:max-w-70 max-sm:flex-col"
           >
             {
               socialMedia.map((social) => (
@@ -106,7 +105,7 @@ const socialMedia = devsync.socialMedia ?? []
           </div>
           {
             profile.status?.status && (
-              <span class="border-accent/40 text-accent flex shrink-0 items-center gap-2 rounded border px-4 py-2 font-mono text-xs tracking-wider uppercase max-sm:w-full max-sm:justify-center">
+              <span class="border-accent/40 text-accent flex shrink-0 items-center gap-2 rounded border px-4 py-2 font-mono text-xs tracking-wider uppercase max-sm:w-full max-sm:max-w-70 max-sm:justify-center">
                 <span class="bg-accent inline-block h-2 w-2 animate-pulse rounded-full shadow-[0_0_10px_var(--color-accent)]" />
                 {translation['Status']}: {profile.status.status}
               </span>
