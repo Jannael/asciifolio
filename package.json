@@ -10,7 +10,8 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "fmt": "prettier --write .",
-    "fmt:check": "prettier --check ."
+    "fmt:check": "prettier --check .",
+    "prepare": "husky"
   },
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "5.2.8",
@@ -26,10 +27,21 @@
   "devsync": {
     "pathToCompiledCV": "./dist/[lang]/cv/index.html"
   },
+  "lint-staged": {
+    "*.{astro,js,ts,mjs}": [
+      "prettier --write",
+      "oxlint --fix"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
+  },
   "devDependencies": {
+    "husky": "9.1.7",
+    "lint-staged": "17.0.5",
     "oxlint": "1.65.0",
-    "prettier": "^3.8.3",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.8.0"
+    "prettier": "3.8.3",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-tailwindcss": "0.8.0"
   }
 }
