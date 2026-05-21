@@ -1,15 +1,16 @@
 ---
 import devsync from '@core'
 import { defaultLang } from '@core'
-import { type availableLangsType } from '@/devsync/fields-translations'
+import { translations, type availableLangsType } from '@core'
 
 const lang = (
   Astro.params.lang || defaultLang
 ).toLowerCase() as availableLangsType
 const profile = devsync[lang] ?? devsync[defaultLang]
-const fullName = devsync.name ?? 'Unknown'
-const dept = devsync.department ?? 'N/A'
-const loc = devsync.location ?? 'N/A'
+const translation = translations[lang]
+const fullName = devsync.name ?? translation['UNKNOWN']
+const dept = devsync.department ?? translation['NA']
+const loc = devsync.location ?? translation['NA']
 const uuid = [...fullName].reduce(
   (a, c) => ((a << 5) - a + c.charCodeAt(0)) | 0,
   0,
@@ -38,7 +39,7 @@ const socialIcons = devsync.socialMedia?.slice(0, 3) ?? []
       <div class="p-5 font-mono text-sm">
         <div class="text-text-secondary mb-3">
           <span class="text-accent">$</span>
-          <span class="ml-2">cat about_me.txt</span>
+          <span class="ml-2">{translation['CAT_CMD']}</span>
         </div>
 
         <blockquote class="border-accent border-l-2 pl-4 not-italic">
@@ -85,19 +86,27 @@ const socialIcons = devsync.socialMedia?.slice(0, 3) ?? []
 
         <div class="w-full space-y-2 font-mono text-xs">
           <div class="flex items-start gap-2">
-            <span class="text-accent shrink-0 font-bold">NAME:</span>
+            <span class="text-accent shrink-0 font-bold"
+              >{translation['NAME_LABEL']}:</span
+            >
             <span class="text-text-secondary break-all">{fullName}</span>
           </div>
           <div class="flex items-start gap-2">
-            <span class="text-accent shrink-0 font-bold">DEPT:</span>
+            <span class="text-accent shrink-0 font-bold"
+              >{translation['DEPT_LABEL']}:</span
+            >
             <span class="text-text-secondary break-all">{dept}</span>
           </div>
           <div class="flex items-start gap-2">
-            <span class="text-accent shrink-0 font-bold">LOC:</span>
+            <span class="text-accent shrink-0 font-bold"
+              >{translation['LOC_LABEL']}:</span
+            >
             <span class="text-text-secondary break-all">{loc}</span>
           </div>
           <div class="flex items-start gap-2">
-            <span class="text-accent shrink-0 font-bold">UUID:</span>
+            <span class="text-accent shrink-0 font-bold"
+              >{translation['UUID_LABEL']}:</span
+            >
             <span class="text-text-secondary font-mono break-all"
               >{fullUuid}</span
             >
