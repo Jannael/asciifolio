@@ -2,6 +2,7 @@
   "defaultLang": "en",
   "site": "https://devsync.work",
   "name": "Your Full Name",
+  "department": "Your Department or Team",
   "img": "https://your-image-url.com/your-image.jpg",
   "socialMedia": [
     {
