@@ -95,10 +95,7 @@ const errorResponse = z.object({
   message: z.string(),
 })
 
-const response = z.discriminatedUnion('status', [
-  successResponse,
-  errorResponse,
-])
+const response = z.discriminatedUnion('status', [successResponse, errorResponse])
 ```
 
 **When NOT to use this pattern:**

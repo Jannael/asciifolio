@@ -93,10 +93,7 @@ const userSchema = z.object({
   age: z.number().min(18),
 })
 
-const result = userSchema.safeParse(
-  { name: '', email: 'bad', age: 15 },
-  { errorMap },
-)
+const result = userSchema.safeParse({ name: '', email: 'bad', age: 15 }, { errorMap })
 
 // French error messages:
 // - "Ce champ est obligatoire"
@@ -126,10 +123,7 @@ function useZodErrorMap() {
     switch (issue.code) {
       case z.ZodIssueCode.too_small:
         return {
-          message: intl.formatMessage(
-            { id: 'validation.tooShort' },
-            { min: issue.minimum },
-          ),
+          message: intl.formatMessage({ id: 'validation.tooShort' }, { min: issue.minimum }),
         }
       // ...
     }

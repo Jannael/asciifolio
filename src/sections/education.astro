@@ -3,9 +3,7 @@ import { translations, type availableLangsType } from '@core'
 import devsync, { defaultLang, getLangData } from '@core'
 import SectionHeader from '@/components/section-header.astro'
 
-const lang = (
-  Astro.params.lang || defaultLang
-).toLowerCase() as availableLangsType
+const lang = (Astro.params.lang || defaultLang).toLowerCase() as availableLangsType
 const profile = getLangData(devsync, lang)
 const education = profile.education ?? []
 const translation = translations[lang]
@@ -28,9 +26,7 @@ const translation = translations[lang]
                     {edu.name && (
                       <>
                         {' '}
-                        <span class="text-text-secondary/50 font-normal">
-                          @
-                        </span>{' '}
+                        <span class="text-text-secondary/50 font-normal">@</span>{' '}
                         <span class="text-accent">{edu.name}</span>
                       </>
                     )}
@@ -70,11 +66,7 @@ const translation = translations[lang]
                       class="text-text-secondary hover:text-accent inline-flex items-center gap-1.5 text-xs font-medium underline underline-offset-4 transition-colors"
                     >
                       {link.icon && (
-                        <img
-                          src={link.icon}
-                          alt={link.name}
-                          class="inline h-3.5 w-3.5"
-                        />
+                        <img src={link.icon} alt={link.name} class="inline h-3.5 w-3.5" />
                       )}
                       {link.name}
                       <span class="text-accent/60">↗</span>

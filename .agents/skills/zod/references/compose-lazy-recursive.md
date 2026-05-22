@@ -106,13 +106,7 @@ const menuItemSchema: z.ZodType<MenuItem> = z.object({
 **JSON Schema (any valid JSON):**
 
 ```typescript
-type JSONValue =
-  | string
-  | number
-  | boolean
-  | null
-  | JSONValue[]
-  | { [key: string]: JSONValue }
+type JSONValue = string | number | boolean | null | JSONValue[] | { [key: string]: JSONValue }
 
 const jsonValueSchema: z.ZodType<JSONValue> = z.lazy(() =>
   z.union([
@@ -122,7 +116,7 @@ const jsonValueSchema: z.ZodType<JSONValue> = z.lazy(() =>
     z.null(),
     z.array(jsonValueSchema),
     z.record(jsonValueSchema),
-  ]),
+  ])
 )
 ```
 

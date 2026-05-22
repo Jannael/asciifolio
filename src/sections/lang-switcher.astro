@@ -22,9 +22,7 @@ const { currentLang = defaultLang, class: className } = Astro.props
             href={`/${lang}/`}
             aria-current={isActive ? 'page' : undefined}
             class={`rounded-md px-3 py-1.5 text-xs font-semibold tracking-wider uppercase transition-all duration-300 ${
-              isActive
-                ? 'bg-accent text-white'
-                : 'text-text-secondary hover:text-accent'
+              isActive ? 'bg-accent text-white' : 'text-text-secondary hover:text-accent'
             }`}
           >
             {lang}

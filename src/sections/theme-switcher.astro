@@ -37,10 +37,7 @@ const { class: className = '' } = Astro.props
   const syncButtonTheme = () => {
     const isDark = document.documentElement.classList.contains('dark')
     button?.setAttribute('aria-pressed', String(isDark))
-    button?.setAttribute(
-      'aria-label',
-      isDark ? 'Switch to light mode' : 'Switch to dark mode',
-    )
+    button?.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode')
     moonIcon?.classList.toggle('hidden', isDark)
     sunIcon?.classList.toggle('hidden', !isDark)
   }

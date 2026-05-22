@@ -70,9 +70,7 @@ import devsync from '@core'
 import { defaultLang } from '@core'
 import type { availableLangsType } from '@core'
 
-const lang = (
-  Astro.params.lang || defaultLang
-).toLowerCase() as availableLangsType
+const lang = (Astro.params.lang || defaultLang).toLowerCase() as availableLangsType
 const profile = devsync[lang] ?? devsync[defaultLang]
 ---
 ```

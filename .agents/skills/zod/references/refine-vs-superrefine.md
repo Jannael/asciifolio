@@ -23,7 +23,7 @@ const passwordSchema = z.string().refine(
     if (!/[0-9]/.test(password)) return false
     return true
   },
-  { message: 'Password does not meet requirements' },
+  { message: 'Password does not meet requirements' }
 )
 
 passwordSchema.parse('weak')
@@ -78,9 +78,7 @@ passwordSchema.safeParse('weak')
 
 ```typescript
 // Simple boolean condition with one error message
-const adultSchema = z
-  .number()
-  .refine((age) => age >= 18, { message: 'Must be 18 or older' })
+const adultSchema = z.number().refine((age) => age >= 18, { message: 'Must be 18 or older' })
 
 // Cross-field validation with single outcome
 const formSchema = z
@@ -102,7 +100,7 @@ const emailSchema = z
       const exists = await checkEmailExists(email)
       return !exists
     },
-    { message: 'Email already registered' },
+    { message: 'Email already registered' }
   )
 ```
 
@@ -120,7 +118,7 @@ const orderSchema = z
       z.object({
         productId: z.string(),
         quantity: z.number(),
-      }),
+      })
     ),
     promoCode: z.string().optional(),
   })

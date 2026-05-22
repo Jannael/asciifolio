@@ -26,7 +26,7 @@ const orderSchema = z.object({
     z.object({
       productId: z.string(),
       quantity: z.number().positive('Quantity must be positive'),
-    }),
+    })
   ),
 })
 
@@ -61,7 +61,7 @@ const orderSchema = z.object({
     z.object({
       productId: z.string(),
       quantity: z.number().positive('Quantity must be positive'),
-    }),
+    })
   ),
 })
 

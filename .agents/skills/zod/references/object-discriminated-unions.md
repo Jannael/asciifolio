@@ -54,10 +54,7 @@ const errorSchema = z.object({
 })
 
 // Discriminated union - Zod uses 'type' field for O(1) dispatch
-const responseSchema = z.discriminatedUnion('type', [
-  successSchema,
-  errorSchema,
-])
+const responseSchema = z.discriminatedUnion('type', [successSchema, errorSchema])
 
 type Response = z.infer<typeof responseSchema>
 

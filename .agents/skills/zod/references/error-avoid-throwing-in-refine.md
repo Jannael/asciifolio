@@ -122,7 +122,7 @@ const schema = z
       const exists = await checkEmailExists(data.email)
       return !exists
     },
-    { message: 'Email already registered', path: ['email'] },
+    { message: 'Email already registered', path: ['email'] }
   )
 ```
 

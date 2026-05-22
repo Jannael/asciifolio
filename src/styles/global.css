@@ -52,12 +52,12 @@ img[src^='https://cdn.simpleicons.org/'] {
 }
 
 .nav-logo {
-  filter: brightness(0) saturate(100%) invert(26%) sepia(82%) saturate(521%)
-    hue-rotate(96deg) brightness(48%) contrast(101%);
+  filter: brightness(0) saturate(100%) invert(26%) sepia(82%) saturate(521%) hue-rotate(96deg)
+    brightness(48%) contrast(101%);
 }
 .dark .nav-logo {
-  filter: brightness(0) saturate(100%) invert(77%) sepia(51%) saturate(468%)
-    hue-rotate(92deg) brightness(96%) contrast(89%);
+  filter: brightness(0) saturate(100%) invert(77%) sepia(51%) saturate(468%) hue-rotate(92deg)
+    brightness(96%) contrast(89%);
 }
 
 @keyframes blink {

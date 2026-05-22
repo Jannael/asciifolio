@@ -10,12 +10,8 @@
   <div class="flex flex-col items-center gap-8 py-12 md:flex-row">
     <div class="flex-1">
       <h1 class="mb-4 text-3xl font-bold md:text-5xl">Welcome to Our Site</h1>
-      <p class="mb-6 text-lg text-gray-600">
-        Build amazing things with Tailwind CSS
-      </p>
-      <button
-        class="rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700"
-      >
+      <p class="mb-6 text-lg text-gray-600">Build amazing things with Tailwind CSS</p>
+      <button class="rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700">
         Get Started
       </button>
     </div>
@@ -29,20 +25,12 @@
 ### Responsive Grid Gallery
 
 ```html
-<div
-  class="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
->
+<div class="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
   <div class="aspect-square overflow-hidden rounded-lg bg-gray-200">
-    <img
-      src="image1.jpg"
-      class="h-full w-full object-cover transition hover:scale-105"
-    />
+    <img src="image1.jpg" class="h-full w-full object-cover transition hover:scale-105" />
   </div>
   <div class="aspect-square overflow-hidden rounded-lg bg-gray-200">
-    <img
-      src="image2.jpg"
-      class="h-full w-full object-cover transition hover:scale-105"
-    />
+    <img src="image2.jpg" class="h-full w-full object-cover transition hover:scale-105" />
   </div>
   <!-- More items... -->
 </div>
@@ -140,9 +128,7 @@ Component that responds to its container size, not viewport:
 
 ```html
 <div class="@container">
-  <div class="@lg:text-xl @2xl:text-2xl">
-    Text size based on container, not viewport
-  </div>
+  <div class="@lg:text-xl @2xl:text-2xl">Text size based on container, not viewport</div>
 </div>
 ```
 

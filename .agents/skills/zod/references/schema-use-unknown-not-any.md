@@ -73,10 +73,7 @@ const orderPlacedSchema = z.object({
   }),
 })
 
-const eventSchema = z.discriminatedUnion('type', [
-  userCreatedSchema,
-  orderPlacedSchema,
-])
+const eventSchema = z.discriminatedUnion('type', [userCreatedSchema, orderPlacedSchema])
 
 // Full type safety for each event type
 ```

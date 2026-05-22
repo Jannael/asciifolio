@@ -28,28 +28,12 @@ interface Props {
   isLast?: boolean
 }
 
-const {
-  company,
-  position,
-  img,
-  web,
-  date,
-  links,
-  description,
-  list,
-  skills,
-  index,
-  isLast,
-} = Astro.props
+const { company, position, img, web, date, links, description, list, skills, index, isLast } =
+  Astro.props
 ---
 
-<li
-  class="{isLast ? '' : 'border-l-2 border-border'} relative ml-4 pb-12 pl-12"
->
-  <div
-    class="bg-accent ring-main absolute top-0 -left-[9px] h-4 w-4 rounded-full ring-4"
-  >
-  </div>
+<li class="{isLast ? '' : 'border-l-2 border-border'} relative ml-4 pb-12 pl-12">
+  <div class="bg-accent ring-main absolute top-0 -left-[9px] h-4 w-4 rounded-full ring-4"></div>
 
   <div class="mb-3">
     {
@@ -71,21 +55,14 @@ const {
     }
   </div>
 
-  {
-    description && (
-      <p class="text-text-secondary mb-4 text-sm leading-relaxed">
-        {description}
-      </p>
-    )
-  }
+  {description && <p class="text-text-secondary mb-4 text-sm leading-relaxed">{description}</p>}
 
   {
     list?.items?.length && (
       <ul class="mb-4 space-y-2">
         {list.items.map((item) => (
           <li class="text-text-secondary text-sm">
-            <span class="text-text font-semibold">{item.highlight}:</span>{' '}
-            {item.description}
+            <span class="text-text font-semibold">{item.highlight}:</span> {item.description}
           </li>
         ))}
       </ul>
@@ -97,13 +74,7 @@ const {
       <div class="flex flex-wrap gap-2">
         {skills.map((skill) => (
           <span class="border-border bg-main inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
-            {skill.icon && (
-              <img
-                src={skill.icon}
-                alt={skill.name}
-                class="mr-1.5 inline h-3 w-3"
-              />
-            )}
+            {skill.icon && <img src={skill.icon} alt={skill.name} class="mr-1.5 inline h-3 w-3" />}
             {skill.name}
           </span>
         ))}

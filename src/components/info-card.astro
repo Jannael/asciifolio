@@ -29,19 +29,8 @@ interface Props {
   expand?: boolean
 }
 
-const {
-  company,
-  position,
-  img,
-  web,
-  date,
-  links,
-  description,
-  list,
-  skills,
-  name,
-  expand,
-} = Astro.props
+const { company, position, img, web, date, links, description, list, skills, name, expand } =
+  Astro.props
 ---
 
 <li class="group relative mb-10 w-full last:mb-0 lg:mb-0">
@@ -53,9 +42,7 @@ const {
     >
     </div>
 
-    <div
-      class="mb-8 flex flex-col items-center gap-6 sm:flex-row sm:justify-between"
-    >
+    <div class="mb-8 flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
       <div class="flex items-center gap-5">
         {
           img && (
@@ -78,11 +65,7 @@ const {
                 class={`flex flex-col items-center font-bold lg:text-2xl ${expand ? 'gap-2' : 'gap-1'} ${expand ? 'text-2xl' : 'text-lg'} ${expand ? 'lg:flex-row' : 'lg:flex-col'}`}
               >
                 {position}
-                {expand && (
-                  <span class="text-text/60 hidden w-fit text-lg lg:block">
-                    |
-                  </span>
-                )}
+                {expand && <span class="text-text/60 hidden w-fit text-lg lg:block">|</span>}
                 <span class="text-accent text-sm lg:text-base">{company}</span>
               </h3>
             )
@@ -93,11 +76,7 @@ const {
                 class={`flex flex-col items-center font-bold lg:text-2xl ${expand ? 'gap-2' : 'gap-1'} ${expand ? 'text-2xl' : 'text-lg'} ${expand ? 'lg:flex-row' : 'lg:flex-col'}`}
               >
                 {name}
-                {expand && (
-                  <span class="text-text/60 hidden w-fit text-lg lg:block">
-                    |
-                  </span>
-                )}
+                {expand && <span class="text-text/60 hidden w-fit text-lg lg:block">|</span>}
               </h3>
             )
           }
@@ -123,13 +102,7 @@ const {
               rel="noopener noreferrer"
               class="group/btn border-text/15 bg-main/50 hover:border-third hover:bg-third/30 hover:shadow-third/20 relative flex items-center justify-center rounded-full border px-4 py-2 text-sm font-medium backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
-              {link.icon && (
-                <img
-                  src={link.icon}
-                  alt={link.name}
-                  class="mr-2 inline h-4 w-4"
-                />
-              )}
+              {link.icon && <img src={link.icon} alt={link.name} class="mr-2 inline h-4 w-4" />}
               <span class="relative z-10">{link.name}</span>
             </a>
           ))}
@@ -137,11 +110,7 @@ const {
       ) : null
     }
 
-    {
-      description && (
-        <p class="text-text/80 mb-8 text-base leading-relaxed">{description}</p>
-      )
-    }
+    {description && <p class="text-text/80 mb-8 text-base leading-relaxed">{description}</p>}
 
     {
       list?.items?.length ? (
@@ -152,8 +121,7 @@ const {
           <ul class="mb-8 list-disc space-y-2.5 pl-7 text-sm">
             {list.items.map((item) => (
               <li class="text-text/70 hover:text-text transition-colors duration-300">
-                <span class="text-accent font-semibold">{item.highlight}:</span>{' '}
-                {item.description}
+                <span class="text-accent font-semibold">{item.highlight}:</span> {item.description}
               </li>
             ))}
           </ul>
@@ -167,11 +135,7 @@ const {
           {skills.map((skill) => (
             <span class="border-text/10 bg-second/20 hover:border-accent hover:bg-accent/30 inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-medium backdrop-blur-sm transition-all duration-300 hover:scale-105">
               {skill.icon && (
-                <img
-                  src={skill.icon}
-                  alt={skill.name}
-                  class="mr-2 inline h-3.5 w-3.5"
-                />
+                <img src={skill.icon} alt={skill.name} class="mr-2 inline h-3.5 w-3.5" />
               )}
               {skill.name}
             </span>

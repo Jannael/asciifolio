@@ -76,13 +76,7 @@ const { name, img, web, links, description, list, skills } = Astro.props
     }
   </div>
 
-  {
-    description && (
-      <p class="text-text-secondary mb-6 text-sm leading-relaxed">
-        {description}
-      </p>
-    )
-  }
+  {description && <p class="text-text-secondary mb-6 text-sm leading-relaxed">{description}</p>}
 
   {
     list?.items?.length ? (
@@ -93,9 +87,7 @@ const { name, img, web, links, description, list, skills } = Astro.props
               {'>>'} {item.highlight}
             </div>
             {item.description && (
-              <p class="text-text-secondary text-xs leading-relaxed">
-                {item.description}
-              </p>
+              <p class="text-text-secondary text-xs leading-relaxed">{item.description}</p>
             )}
           </div>
         ))}

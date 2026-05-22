@@ -22,9 +22,7 @@ const searchSchema = z.object({
 })
 
 // Form data / query params are strings
-const formData = new URLSearchParams(
-  'query=test&page=1&limit=10&showDeleted=true',
-)
+const formData = new URLSearchParams('query=test&page=1&limit=10&showDeleted=true')
 const params = Object.fromEntries(formData)
 // { query: 'test', page: '1', limit: '10', showDeleted: 'true' }
 
@@ -47,9 +45,7 @@ const searchSchema = z.object({
 })
 
 // Form data / query params are strings
-const formData = new URLSearchParams(
-  'query=test&page=1&limit=10&showDeleted=true',
-)
+const formData = new URLSearchParams('query=test&page=1&limit=10&showDeleted=true')
 const params = Object.fromEntries(formData)
 
 const result = searchSchema.parse(params)
@@ -82,9 +78,7 @@ z.coerce.boolean().parse('') // false
 z.coerce.boolean().parse('0') // true! (non-empty string)
 
 // For strict boolean parsing from strings:
-const strictBooleanSchema = z
-  .enum(['true', 'false'])
-  .transform((v) => v === 'true')
+const strictBooleanSchema = z.enum(['true', 'false']).transform((v) => v === 'true')
 ```
 
 **When NOT to use this pattern:**

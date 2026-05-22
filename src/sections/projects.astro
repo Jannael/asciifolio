@@ -5,9 +5,7 @@ import { translations, type availableLangsType, getLangData } from '@core'
 import SectionHeader from '@/components/section-header.astro'
 import ProjectCard from '@/components/project-card.astro'
 
-const lang = (
-  Astro.params.lang || defaultLang
-).toLowerCase() as availableLangsType
+const lang = (Astro.params.lang || defaultLang).toLowerCase() as availableLangsType
 const profile = getLangData(devsync, lang)
 const projects = profile.projects ?? []
 const translation = translations[lang]

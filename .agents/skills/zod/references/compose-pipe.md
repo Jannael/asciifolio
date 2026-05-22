@@ -40,10 +40,7 @@ const parsePrice = z.string().transform((s) => {
 })
 
 // Stage 2: Validate number constraints
-const validPrice = z
-  .number()
-  .min(0, 'Must be positive')
-  .max(1000000, 'Too large')
+const validPrice = z.number().min(0, 'Must be positive').max(1000000, 'Too large')
 
 // Stage 3: Transform to cents
 const centsPrice = z.number().transform((n) => Math.round(n * 100))
@@ -87,8 +84,8 @@ const emailArraySchema = z
       emails.map((email) => ({
         address: email.toLowerCase(),
         domain: email.split('@')[1],
-      })),
-    ),
+      }))
+    )
   )
 
 emailArraySchema.parse('John@Example.com, jane@test.com')

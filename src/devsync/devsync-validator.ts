@@ -25,7 +25,7 @@ const ListSchema = z.object({
     z.object({
       highlight: z.string({ message: 'Highlight is required' }),
       description: z.string({ message: 'Description is required' }),
-    }),
+    })
   ),
 })
 
@@ -98,17 +98,10 @@ export type ListSchema = z.infer<typeof ListSchema>
 export type Devsync = z.infer<typeof devsyncSchema>
 export const devsyncSchemaPartial = devsyncSchema.partial()
 export type DevsyncPartial = z.infer<typeof devsyncSchemaPartial>
-export type DevsyncObjectPartial = z.infer<
-  ReturnType<typeof devsyncObjectSchema.deepPartial>
->
+export type DevsyncObjectPartial = z.infer<ReturnType<typeof devsyncObjectSchema.deepPartial>>
 
 export const parseDevsync = (devsync: unknown): DevsyncPartial =>
   devsyncSchemaPartial.safeParse(devsync).data ?? {}
 
-export const getLangData = (
-  devsync: DevsyncPartial,
-  lang: string,
-): DevsyncObjectPartial =>
-  devsyncObjectSchema
-    .deepPartial()
-    .safeParse((devsync as Record<string, unknown>)[lang]).data ?? {}
+export const getLangData = (devsync: DevsyncPartial, lang: string): DevsyncObjectPartial =>
+  devsyncObjectSchema.deepPartial().safeParse((devsync as Record<string, unknown>)[lang]).data ?? {}

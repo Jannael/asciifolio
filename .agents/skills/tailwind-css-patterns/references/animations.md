@@ -3,9 +3,7 @@
 ## Basic Transitions
 
 ```html
-<button class="bg-blue-500 transition duration-300 hover:bg-blue-700">
-  Smooth transition
-</button>
+<button class="bg-blue-500 transition duration-300 hover:bg-blue-700">Smooth transition</button>
 ```
 
 ### Transition Properties
@@ -28,17 +26,13 @@
 
 ```html
 <!-- Scale on hover -->
-<div class="transform transition duration-300 hover:scale-110">
-  Scale on hover
-</div>
+<div class="transform transition duration-300 hover:scale-110">Scale on hover</div>
 
 <!-- Rotate on hover -->
 <img class="transform transition duration-300 hover:rotate-6" />
 
 <!-- Multiple transforms -->
-<div class="transform transition hover:-translate-y-1 hover:scale-105">
-  Scale up and move up
-</div>
+<div class="transform transition hover:-translate-y-1 hover:scale-105">Scale up and move up</div>
 ```
 
 ---
@@ -62,14 +56,7 @@
   fill="none"
   viewBox="0 0 24 24"
 >
-  <circle
-    class="opacity-25"
-    cx="12"
-    cy="12"
-    r="10"
-    stroke="currentColor"
-    stroke-width="4"
-  ></circle>
+  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
   <path
     class="opacity-75"
     fill="currentColor"

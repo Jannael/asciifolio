@@ -34,9 +34,7 @@ Infer multilingual support directly unless user specifies otherwise.
   "site": "https://your-site.com",
   "name": "Your Name",
   "img": "https://image-url.com/photo.jpg",
-  "socialMedia": [
-    { "name": "LinkedIn", "url": "...", "icon": "...", "mdBadge": "..." }
-  ],
+  "socialMedia": [{ "name": "LinkedIn", "url": "...", "icon": "...", "mdBadge": "..." }],
   "githubUserName": "your-username"
 }
 ```

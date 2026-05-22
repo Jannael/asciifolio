@@ -21,7 +21,7 @@ const formSchema = z
   })
   .refine(
     (data) => data.password === data.confirmPassword,
-    { message: 'Passwords do not match' }, // No path specified
+    { message: 'Passwords do not match' } // No path specified
   )
 
 const result = formSchema.safeParse({
@@ -90,20 +90,18 @@ const dateRangeSchema = z
   .refine(
     (data) => {
       if (!data.minDays) return true
-      const days =
-        (data.endDate.getTime() - data.startDate.getTime()) / 86400000
+      const days = (data.endDate.getTime() - data.startDate.getTime()) / 86400000
       return days >= data.minDays
     },
-    { message: 'Date range is too short', path: ['endDate'] },
+    { message: 'Date range is too short', path: ['endDate'] }
   )
   .refine(
     (data) => {
       if (!data.maxDays) return true
-      const days =
-        (data.endDate.getTime() - data.startDate.getTime()) / 86400000
+      const days = (data.endDate.getTime() - data.startDate.getTime()) / 86400000
       return days <= data.maxDays
     },
-    { message: 'Date range is too long', path: ['endDate'] },
+    { message: 'Date range is too long', path: ['endDate'] }
   )
 ```
 

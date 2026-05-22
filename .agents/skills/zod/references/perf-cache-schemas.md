@@ -69,7 +69,7 @@ function DynamicForm({ minAge }: { minAge: number }) {
         name: z.string().min(1),
         age: z.number().min(minAge),
       }),
-    [minAge],
+    [minAge]
   )
 
   // ...
@@ -123,7 +123,7 @@ function getUserSchema(role: string) {
       z.object({
         name: z.string(),
         permissions: z.array(z.string()),
-      }),
+      })
     )
   }
   return schemaCache.get(role)!

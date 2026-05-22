@@ -33,10 +33,8 @@ import { z } from 'zod'
 
 function validateArrayFastFail<T>(
   schema: z.ZodType<T>,
-  items: unknown[],
-):
-  | { success: true; data: T[] }
-  | { success: false; error: z.ZodError; index: number } {
+  items: unknown[]
+): { success: true; data: T[] } | { success: false; error: z.ZodError; index: number } {
   const validated: T[] = []
 
   for (let i = 0; i < items.length; i++) {
@@ -59,7 +57,7 @@ function validateArrayFastFail<T>(
 function validateSample<T>(
   schema: z.ZodType<T>,
   items: unknown[],
-  sampleSize: number = 100,
+  sampleSize: number = 100
 ): { valid: boolean; sampleErrors?: z.ZodIssue[] } {
   // Validate random sample
   const indices = new Set<number>()
@@ -76,9 +74,7 @@ function validateSample<T>(
     }
   }
 
-  return errors.length > 0
-    ? { valid: false, sampleErrors: errors }
-    : { valid: true }
+  return errors.length > 0 ? { valid: false, sampleErrors: errors } : { valid: true }
 }
 
 // Check 100 random items from 100,000 - very fast
@@ -92,7 +88,7 @@ async function validateInBatches<T>(
   schema: z.ZodType<T>,
   items: unknown[],
   batchSize: number = 1000,
-  onProgress?: (percent: number) => void,
+  onProgress?: (percent: number) => void
 ): Promise<z.SafeParseReturnType<unknown, T[]>> {
   const validated: T[] = []
   const errors: z.ZodIssue[] = []
@@ -110,7 +106,7 @@ async function validateInBatches<T>(
           ...result.error.issues.map((issue) => ({
             ...issue,
             path: [i + j, ...issue.path],
-          })),
+          }))
         )
       }
     }
@@ -137,7 +133,7 @@ await validateInBatches(itemSchema, largeArray, 1000, (percent) => {
 ```typescript
 async function* validateStream<T>(
   schema: z.ZodType<T>,
-  items: AsyncIterable<unknown>,
+  items: AsyncIterable<unknown>
 ): AsyncGenerator<T, void, unknown> {
   for await (const item of items) {
     yield schema.parse(item) // Throws on invalid

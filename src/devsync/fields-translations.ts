@@ -345,5 +345,4 @@ export const localeMap: Record<availableLangsType, string> = {
   ko: 'ko_KR', // korean
 } as const
 
-export const ogLocale = (lang: string) =>
-  localeMap[lang as keyof typeof localeMap] ?? 'en_US'
+export const ogLocale = (lang: string) => localeMap[lang as keyof typeof localeMap] ?? 'en_US'

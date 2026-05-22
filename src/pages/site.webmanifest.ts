@@ -3,8 +3,7 @@ import devsync from '@core'
 
 export const GET: APIRoute = async () => {
   const siteName = devsync.name
-  const shortName =
-    devsync.name?.split(' ').slice(0, 2).join(' ') || 'Portfolio'
+  const shortName = devsync.name?.split(' ').slice(0, 2).join(' ') || 'Portfolio'
   const description = devsync.description || ''
 
   const manifest = {

@@ -41,12 +41,12 @@ import { z } from 'zod'
 // Preprocess normalizes before validation
 const trimmedString = z.preprocess(
   (val) => (typeof val === 'string' ? val.trim() : val),
-  z.string(),
+  z.string()
 )
 
 const lowercaseEmail = z.preprocess(
   (val) => (typeof val === 'string' ? val.toLowerCase().trim() : val),
-  z.string().email(),
+  z.string().email()
 )
 
 const jsonObject = z.preprocess(
@@ -60,7 +60,7 @@ const jsonObject = z.preprocess(
     }
     return val
   },
-  z.object({ theme: z.string() }),
+  z.object({ theme: z.string() })
 )
 
 const userSchema = z.object({
@@ -85,13 +85,13 @@ const user = userSchema.parse(formData)
 // Trim all strings
 const trimmedString = z.preprocess(
   (val) => (typeof val === 'string' ? val.trim() : val),
-  z.string(),
+  z.string()
 )
 
 // Parse numeric strings
 const numericString = z.preprocess(
   (val) => (typeof val === 'string' ? Number(val) : val),
-  z.number(),
+  z.number()
 )
 
 // Parse boolean-like values
@@ -102,16 +102,12 @@ const booleanLike = z.preprocess((val) => {
 }, z.boolean())
 
 // Parse date strings
-const dateString = z.preprocess(
-  (val) => (typeof val === 'string' ? new Date(val) : val),
-  z.date(),
-)
+const dateString = z.preprocess((val) => (typeof val === 'string' ? new Date(val) : val), z.date())
 
 // Split comma-separated strings into arrays
 const csvArray = z.preprocess(
-  (val) =>
-    typeof val === 'string' ? val.split(',').map((s) => s.trim()) : val,
-  z.array(z.string()),
+  (val) => (typeof val === 'string' ? val.split(',').map((s) => s.trim()) : val),
+  z.array(z.string())
 )
 ```
 

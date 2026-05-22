@@ -21,12 +21,7 @@ export * from './reports' // Another large schema
 export * from './admin' // Admin-only schemas
 
 // app/page.tsx
-import {
-  userSchema,
-  orderSchema,
-  analyticsSchema,
-  reportsSchema,
-} from '@/schemas'
+import { userSchema, orderSchema, analyticsSchema, reportsSchema } from '@/schemas'
 // All schemas loaded even if not used on this page
 ```
 

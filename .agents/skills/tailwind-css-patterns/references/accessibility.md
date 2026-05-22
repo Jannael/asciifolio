@@ -4,17 +4,12 @@
 
 ```html
 <!-- Custom focus styles that meet WCAG AA -->
-<button
-  class="focus:ring-4 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
->
+<button class="focus:ring-4 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none">
   Accessible Button
 </button>
 
 <!-- Skip links for keyboard navigation -->
-<a
-  href="#main-content"
-  class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4"
->
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4">
   Skip to main content
 </a>
 ```
@@ -47,9 +42,7 @@
 
 <!-- Descriptive links -->
 <a href="/docs" aria-describedby="docs-description"> Documentation </a>
-<p id="docs-description" class="sr-only">
-  Learn how to use our API and integration guides
-</p>
+<p id="docs-description" class="sr-only">Learn how to use our API and integration guides</p>
 
 <!-- Live regions for dynamic content -->
 <div aria-live="polite" class="sr-only">
@@ -71,14 +64,10 @@
 <!-- Ensure sufficient contrast ratios -->
 <div class="bg-gray-900 text-white">High contrast text (WCAG AAA)</div>
 
-<div class="bg-blue-500 text-blue-100">
-  Good contrast on colored backgrounds
-</div>
+<div class="bg-blue-500 text-blue-100">Good contrast on colored backgrounds</div>
 
 <!-- Use contrast utilities for testing -->
-<div
-  class="bg-red-500 text-white contrast-more:bg-red-600 contrast-more:text-red-100"
->
+<div class="bg-red-500 text-white contrast-more:bg-red-600 contrast-more:text-red-100">
   Adjusts for high contrast mode
 </div>
 ```
@@ -150,9 +139,7 @@
 >
   <div class="w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
     <h2 id="alert-title" class="mb-2 text-lg font-bold">Are you sure?</h2>
-    <p id="alert-description" class="mb-4 text-gray-600">
-      This action cannot be undone.
-    </p>
+    <p id="alert-description" class="mb-4 text-gray-600">This action cannot be undone.</p>
     <div class="flex justify-end gap-2">
       <button class="px-4 py-2 text-gray-600">Cancel</button>
       <button class="rounded bg-red-500 px-4 py-2 text-white">Delete</button>

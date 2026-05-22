@@ -59,9 +59,7 @@ const apiUserSchema = z.object({
   id: z.string(),
   created_at: z.string().transform((s) => new Date(s)),
   tags: z.string().transform((s) => s.split(',')),
-  is_active: z
-    .union([z.boolean(), z.literal(1), z.literal(0)])
-    .transform((v) => Boolean(v)),
+  is_active: z.union([z.boolean(), z.literal(1), z.literal(0)]).transform((v) => Boolean(v)),
 })
 
 // What the API sends

@@ -36,24 +36,18 @@ commentSchema.parse({
 import { z } from 'zod'
 
 const commentSchema = z.object({
-  author: z
-    .string()
-    .min(1, 'Author is required')
-    .max(100, 'Author name too long'),
+  author: z.string().min(1, 'Author is required').max(100, 'Author name too long'),
 
   email: z.string().email('Invalid email address'),
 
-  content: z
-    .string()
-    .min(1, 'Comment cannot be empty')
-    .max(5000, 'Comment too long'),
+  content: z.string().min(1, 'Comment cannot be empty').max(5000, 'Comment too long'),
 
   website: z
     .string()
     .url('Invalid URL')
     .refine(
       (url) => url.startsWith('http://') || url.startsWith('https://'),
-      'Only http/https URLs allowed',
+      'Only http/https URLs allowed'
     )
     .optional(),
 })

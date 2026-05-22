@@ -3,18 +3,13 @@ import devsync from '@core'
 import { defaultLang } from '@core'
 import { translations, type availableLangsType, getLangData } from '@core'
 
-const lang = (
-  Astro.params.lang || defaultLang
-).toLowerCase() as availableLangsType
+const lang = (Astro.params.lang || defaultLang).toLowerCase() as availableLangsType
 const profile = getLangData(devsync, lang)
 const translation = translations[lang]
 const fullName = devsync.name ?? translation['UNKNOWN']
 const dept = devsync.department ?? translation['NA']
 const loc = devsync.location ?? translation['NA']
-const uuid = [...fullName].reduce(
-  (a, c) => ((a << 5) - a + c.charCodeAt(0)) | 0,
-  0,
-)
+const uuid = [...fullName].reduce((a, c) => ((a << 5) - a + c.charCodeAt(0)) | 0, 0)
 const uuidStr = (Math.abs(uuid) % 0xffffffff).toString(16).padStart(8, '0')
 const fullUuid = `${uuidStr}-${uuidStr.slice(0, 4)}-4${uuidStr.slice(4, 7)}-a${uuidStr.slice(7, 10)}-${uuidStr}`
 const socialIcons = devsync.socialMedia?.slice(0, 3) ?? []
@@ -22,15 +17,9 @@ const socialIcons = devsync.socialMedia?.slice(0, 3) ?? []
 
 <section class="about-section relative m-auto w-full max-w-4xl px-6 py-10">
   <div class="relative grid gap-6 lg:grid-cols-[3fr_2fr]">
-    <div
-      class="border-border bg-main relative h-fit overflow-hidden rounded-lg border"
-    >
-      <div
-        class="border-border flex items-center justify-between border-b px-4 py-2"
-      >
-        <span
-          class="text-accent font-mono text-xs font-bold tracking-wider uppercase"
-        >
+    <div class="border-border bg-main relative h-fit overflow-hidden rounded-lg border">
+      <div class="border-border flex items-center justify-between border-b px-4 py-2">
+        <span class="text-accent font-mono text-xs font-bold tracking-wider uppercase">
           SUMMARY.TXT
         </span>
         <span class="text-text-secondary font-mono text-xs"> SIZE: 1.2KB </span>
@@ -54,9 +43,7 @@ const socialIcons = devsync.socialMedia?.slice(0, 3) ?? []
       </div>
     </div>
 
-    <div
-      class="border-border bg-main relative hidden overflow-hidden rounded-lg border lg:block"
-    >
+    <div class="border-border bg-main relative hidden overflow-hidden rounded-lg border lg:block">
       <div class="flex flex-col items-center p-5">
         <svg
           viewBox="0 0 120 100"
@@ -68,14 +55,8 @@ const socialIcons = devsync.socialMedia?.slice(0, 3) ?? []
           stroke-linejoin="round"
         >
           <rect x="15" y="5" width="90" height="55" rx="3"></rect>
-          <rect
-            x="20"
-            y="10"
-            width="80"
-            height="40"
-            rx="1"
-            fill="currentColor"
-            class="text-main"></rect>
+          <rect x="20" y="10" width="80" height="40" rx="1" fill="currentColor" class="text-main"
+          ></rect>
           <line x1="60" y1="50" x2="60" y2="62"></line>
           <rect x="45" y="62" width="30" height="4" rx="1"></rect>
           <rect x="35" y="68" width="50" height="3" rx="1"></rect>
@@ -86,30 +67,20 @@ const socialIcons = devsync.socialMedia?.slice(0, 3) ?? []
 
         <div class="w-full space-y-2 font-mono text-xs">
           <div class="flex items-start gap-2">
-            <span class="text-accent shrink-0 font-bold"
-              >{translation['NAME_LABEL']}:</span
-            >
+            <span class="text-accent shrink-0 font-bold">{translation['NAME_LABEL']}:</span>
             <span class="text-text-secondary break-all">{fullName}</span>
           </div>
           <div class="flex items-start gap-2">
-            <span class="text-accent shrink-0 font-bold"
-              >{translation['DEPT_LABEL']}:</span
-            >
+            <span class="text-accent shrink-0 font-bold">{translation['DEPT_LABEL']}:</span>
             <span class="text-text-secondary break-all">{dept}</span>
           </div>
           <div class="flex items-start gap-2">
-            <span class="text-accent shrink-0 font-bold"
-              >{translation['LOC_LABEL']}:</span
-            >
+            <span class="text-accent shrink-0 font-bold">{translation['LOC_LABEL']}:</span>
             <span class="text-text-secondary break-all">{loc}</span>
           </div>
           <div class="flex items-start gap-2">
-            <span class="text-accent shrink-0 font-bold"
-              >{translation['UUID_LABEL']}:</span
-            >
-            <span class="text-text-secondary font-mono break-all"
-              >{fullUuid}</span
-            >
+            <span class="text-accent shrink-0 font-bold">{translation['UUID_LABEL']}:</span>
+            <span class="text-text-secondary font-mono break-all">{fullUuid}</span>
           </div>
         </div>
 

@@ -6,7 +6,7 @@ export * from './devsync-validator'
 export * from './fields-translations'
 
 export const languages = Object.keys(devsync).filter((key) =>
-  availableLangs.includes(key as (typeof availableLangs)[number]),
+  availableLangs.includes(key as (typeof availableLangs)[number])
 )
 export const defaultLang = devsync.defaultLang
 

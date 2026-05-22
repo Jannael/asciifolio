@@ -3,9 +3,7 @@ import { translations, type availableLangsType } from '@core'
 import devsync, { defaultLang, getLangData } from '@core'
 import SectionHeader from '@/components/section-header.astro'
 
-const lang = (
-  Astro.params.lang || defaultLang
-).toLowerCase() as availableLangsType
+const lang = (Astro.params.lang || defaultLang).toLowerCase() as availableLangsType
 const profile = getLangData(devsync, lang)
 const certifications = profile.certifications ?? []
 const translation = translations[lang]
@@ -60,9 +58,7 @@ const translation = translations[lang]
                   {translation['STACK']}:{' '}
                   {cert.skills.map((s, idx) => (
                     <span>
-                      {idx > 0 && (
-                        <span class="text-text-secondary/30"> · </span>
-                      )}
+                      {idx > 0 && <span class="text-text-secondary/30"> · </span>}
                       {s.name}
                     </span>
                   ))}
@@ -70,9 +66,7 @@ const translation = translations[lang]
               )}
             </div>
 
-            {i < certifications.length - 1 && (
-              <hr class="border-border/30 my-6" />
-            )}
+            {i < certifications.length - 1 && <hr class="border-border/30 my-6" />}
           </li>
         ))}
       </ul>

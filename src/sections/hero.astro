@@ -9,9 +9,7 @@ import figlet from 'figlet'
 import LangSwitcher from '@/sections/lang-switcher.astro'
 import ThemeSwitcher from '@/sections/theme-switcher.astro'
 
-const lang = (
-  Astro.params.lang || defaultLang
-).toLowerCase() as availableLangsType
+const lang = (Astro.params.lang || defaultLang).toLowerCase() as availableLangsType
 const profile = getLangData(devsync, lang)
 const translation = translations[lang]
 const firstName = devsync.name?.split(' ')[0] || 'DEV'
@@ -34,9 +32,7 @@ const socialMedia = devsync.socialMedia ?? []
       class="bg-surface-bright border-border text-text-secondary flex items-center gap-2 rounded-tl-xl rounded-tr-xl border border-b px-4 py-3 text-xs select-none"
     >
       <span class="text-accent font-bold">&gt;</span>
-      <span class="min-w-0 flex-1 truncate"
-        >{translation['TERMINAL_TITLE']}</span
-      >
+      <span class="min-w-0 flex-1 truncate">{translation['TERMINAL_TITLE']}</span>
       <div class="flex items-center gap-2">
         <LangSwitcher currentLang={lang} class="text-xs" />
         <ThemeSwitcher />
@@ -83,9 +79,7 @@ const socialMedia = devsync.socialMedia ?? []
         <div
           class="mt-6 flex items-center justify-between gap-3 max-sm:w-full max-sm:flex-col max-sm:items-center"
         >
-          <div
-            class="flex w-full flex-col flex-wrap items-center gap-5 sm:flex-row sm:gap-3"
-          >
+          <div class="flex w-full flex-col flex-wrap items-center gap-5 sm:flex-row sm:gap-3">
             {
               socialMedia.map((social) => (
                 <Badge
