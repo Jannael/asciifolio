@@ -12,8 +12,9 @@ const socialMedia = devsync.socialMedia ?? []
       <pre
         id="pacman-anim"
         class="text-accent/40 font-mono text-xs leading-none"
-        aria-hidden="true">
-      </pre>
+        aria-hidden="true"
+        style="min-height: 1.2em;"
+      >. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </pre>
     </div>
 
     <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
@@ -49,11 +50,11 @@ const socialMedia = devsync.socialMedia ?? []
     if (!pre) return
 
     const WIDTH = 60
-    const PACMAN_OPEN = 'ᗧ'
+    const PACMAN_OPEN = 'C'
     const PACMAN_CLOSED = '>'
-    const GHOST = 'm'
-    const DOT = '·'
-    const PELLET = '●'
+    const GHOST = 'M'
+    const DOT = '.'
+    const PELLET = '*'
 
     const dots = Array.from({ length: WIDTH }, () => DOT)
     dots[15] = PELLET
