@@ -92,9 +92,6 @@ const socialMedia = devsync.socialMedia ?? []
       tick++
 
       if (tick % SPEED === 0) {
-        const prevPos = pacmanPos
-        pacmanPos = (pacmanPos + 1) % WIDTH
-
         if (dots[pacmanPos] === DOT && !eatenDots.has(pacmanPos)) {
           eatenDots.add(pacmanPos)
         }
@@ -109,6 +106,9 @@ const socialMedia = devsync.socialMedia ?? []
             eatenGhosts.add(gp)
           }
         }
+
+        const prevPos = pacmanPos
+        pacmanPos = (pacmanPos + 1) % WIDTH
 
         if (pacmanPos === 0 && prevPos === WIDTH - 1) {
           eatenDots.clear()
