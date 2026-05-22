@@ -39,7 +39,6 @@
     ]
   },
   "devDependencies": {
-    "@astrojs/cloudflare": "12",
     "husky": "9.1.7",
     "lint-staged": "17.0.5",
     "oxlint": "1.65.0",
