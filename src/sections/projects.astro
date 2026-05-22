@@ -1,14 +1,14 @@
 ---
 import devsync from '@core'
 import { defaultLang } from '@core'
-import { translations, type availableLangsType } from '@core'
+import { translations, type availableLangsType, getLangData } from '@core'
 import SectionHeader from '@/components/section-header.astro'
 import ProjectCard from '@/components/project-card.astro'
 
 const lang = (
   Astro.params.lang || defaultLang
 ).toLowerCase() as availableLangsType
-const profile = devsync[lang] ?? devsync[defaultLang]
+const profile = getLangData(devsync, lang)
 const projects = profile.projects ?? []
 const translation = translations[lang]
 ---

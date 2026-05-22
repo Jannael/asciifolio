@@ -3,7 +3,7 @@ import devsync from '@core'
 import '@/styles/global.css'
 import '@fontsource-variable/roboto/wght.css'
 import robotoLatinWoff2 from '@fontsource-variable/roboto/files/roboto-latin-wght-normal.woff2?url'
-import { defaultLang, languages } from '@core'
+import { defaultLang, languages, getLangData } from '@core'
 import { translations, type availableLangsType } from '@core'
 
 export function getStaticPaths() {
@@ -13,7 +13,7 @@ export function getStaticPaths() {
 }
 const lang = (Astro.params.lang || defaultLang) as availableLangsType
 
-const profile = devsync[lang]
+const profile = getLangData(devsync, lang)
 const experience = profile.experience ?? []
 const projects = profile.projects ?? []
 const education = profile.education ?? []

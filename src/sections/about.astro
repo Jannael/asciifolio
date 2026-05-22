@@ -1,12 +1,12 @@
 ---
 import devsync from '@core'
 import { defaultLang } from '@core'
-import { translations, type availableLangsType } from '@core'
+import { translations, type availableLangsType, getLangData } from '@core'
 
 const lang = (
   Astro.params.lang || defaultLang
 ).toLowerCase() as availableLangsType
-const profile = devsync[lang] ?? devsync[defaultLang]
+const profile = getLangData(devsync, lang)
 const translation = translations[lang]
 const fullName = devsync.name ?? translation['UNKNOWN']
 const dept = devsync.department ?? translation['NA']

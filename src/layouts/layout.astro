@@ -1,6 +1,6 @@
 ---
 import devsync from '@core'
-import { defaultLang } from '@core'
+import { defaultLang, getLangData } from '@core'
 import '@/styles/global.css'
 import Footer from '@/sections/footer.astro'
 import '@fontsource-variable/jetbrains-mono/wght.css'
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const lang = (Astro.params.lang || defaultLang).toLowerCase()
-const profile = devsync[lang] ?? devsync[defaultLang]
+const profile = getLangData(devsync, lang)
 
 // Build dynamic SEO from DEVSYNC.json data
 const seoTitle = profile?.jobTitle
