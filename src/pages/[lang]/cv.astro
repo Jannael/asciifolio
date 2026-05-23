@@ -1,10 +1,10 @@
 ---
-import devsync from '@core'
+import devsync, { getLangData } from '@core'
 import '@/styles/global.css'
 import '@fontsource-variable/roboto/wght.css'
 import robotoLatinWoff2 from '@fontsource-variable/roboto/files/roboto-latin-wght-normal.woff2?url'
-import { defaultLang, languages, getLangData } from '@core'
-import { translations, type availableLangsType } from '@core'
+import { defaultLang, languages } from '@core'
+import { translations, type availableLangsType } from '@/devsync/fields-translations'
 
 export function getStaticPaths() {
   return languages.map((lang) => ({
@@ -27,16 +27,7 @@ const skillsFromSkillBlocks = [
   ...certifications.flatMap((item) => (item.skills ?? []).map((skill) => skill.name)),
 ]
 
-const skillsFromAchievements = [
-  ...experience.flatMap((item) => (item.list?.items ?? []).map((entry) => entry.highlight)),
-  ...projects.flatMap((item) => (item.list?.items ?? []).map((entry) => entry.highlight)),
-  ...education.flatMap((item) => (item.list?.items ?? []).map((entry) => entry.highlight)),
-  ...certifications.flatMap((item) => (item.list?.items ?? []).map((entry) => entry.highlight)),
-]
-
-const coreSkills = [...new Set([...skillsFromSkillBlocks, ...skillsFromAchievements])].filter(
-  Boolean
-)
+const coreSkills = [...new Set(skillsFromSkillBlocks)].filter(Boolean)
 ---
 
 <html lang={lang} class="bg-white">
@@ -65,6 +56,13 @@ const coreSkills = [...new Set([...skillsFromSkillBlocks, ...skillsFromAchieveme
           {(devsync.name ?? 'Candidate Name') + (profile.jobTitle ? ' | ' + profile.jobTitle : '')}
         </h1>
         {profile.description && <p class="mt-3 text-sm leading-6">{profile.description}</p>}
+        {
+          (devsync.address || devsync.email || devsync.phone) && (
+            <p class="mt-2 text-sm leading-6">
+              {[devsync.address, devsync.email, devsync.phone].filter(Boolean).join(' | ')}
+            </p>
+          )
+        }
         {
           socialMedia.length > 0 && (
             <div class="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm leading-6">

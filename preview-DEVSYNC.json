@@ -1,9 +1,8 @@
 {
   "defaultLang": "en",
-  "site": "https://asciifolio.pages.dev/",
+  "site": "https://preview.devsync.work",
   "name": "Jannael Orlando",
   "img": "https://avatars.githubusercontent.com/u/177653963?v=4",
-  "department": "R&D / Core Systems",
   "socialMedia": [
     {
       "name": "Devsync",
@@ -19,9 +18,12 @@
     }
   ],
   "githubUserName": "Jannael",
+  "address": "Your City, Country",
+  "email": "your-email@example.com",
+  "phone": "+1 123 456 7890",
   "en": {
-    "description": "This is a preview of the Devsync template. I hope you like Devsync — if you do, please consider starring the repo at https://github.com/jannael/devsync <3",
-    "jobTitle": "Software Developer",
+    "description": "This is a preview of the Devsync default template. I hope you like Devsync — if you do, please consider starring the repo at https://github.com/jannael/devsync <3",
+    "jobTitle": "Senior Frontend Engineer",
     "status": {
       "status": "building-devsync",
       "badge": "![Status](https://img.shields.io/badge/Status-Building%20Devsync-blue)"
@@ -263,7 +265,7 @@
     ]
   },
   "es": {
-    "description": "Esta es una vista previa de la plantilla Devsync. Espero que te guste Devsync; si es así, por favor considera darle una estrella al repositorio en https://github.com/jannael/devsync <3",
+    "description": "Esta es una vista previa de la plantilla predeterminada de Devsync. Espero que te guste Devsync; si es así, por favor considera darle una estrella al repositorio en https://github.com/jannael/devsync <3",
     "jobTitle": "Desarrollador de Software",
     "status": {
       "status": "construyendo-devsync",
