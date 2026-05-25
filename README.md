@@ -16,7 +16,7 @@ Modern portfolio template based on ascii art powered by Devsync
 Initialize your project with a single command:
 
 ```bash
-bunx @jannael/devsync init
+bunx @jannael/devsync init --template @jannael/asciifolio
 ```
 
 ## Configuration
