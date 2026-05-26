@@ -118,6 +118,7 @@ export type Skills = z.infer<typeof skillsSchema>
 export type ListSchema = z.infer<typeof ListSchema>
 export type Devsync = z.infer<typeof devsyncSchema>
 export const devsyncSchemaPartial = devsyncSchema.partial()
+export type DevsyncObject = z.infer<typeof devsyncObjectSchema>
 export type DevsyncPartial = z.infer<typeof devsyncSchemaPartial>
 
 export const parseDevsync = (devsync: unknown): DevsyncPartial =>
