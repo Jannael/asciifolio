@@ -1,6 +1,6 @@
 import { readdir, copyFile, mkdir } from 'node:fs/promises'
 import { join } from 'node:path'
-import devsync from '../DEVSYNC.json'
+import devsync from '../DEVSYNC.json' with { type: 'json' }
 
 const distDir = './dist'
 const publicDir = './public'
