@@ -4,5 +4,3 @@ compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = "./dist"
 
 kv_namespaces = []
-[assets]
-directory = "./dist"
