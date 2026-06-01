@@ -11,7 +11,7 @@ const translation = translations[lang]
 ---
 
 {
-  experience.length > 0 && (
+  Array.isArray(experience) && experience.length > 0 && (
     <section id="experience" class="m-auto w-full max-w-4xl px-6 py-16">
       <SectionHeader title={translation['Experience']} />
 
@@ -45,25 +45,27 @@ const translation = translations[lang]
               )}
 
               {exp.list?.items?.length && (
-                <div class="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  {exp.list.items.map((item, idx) => (
-                    <div class="border-border border p-3">
-                      <p class="text-accent mb-4 font-mono text-xs font-bold tracking-wider uppercase">
-                        &gt;&gt; {translation['ACHIEVEMENT']}_{idx + 1}
-                      </p>
-                      <p class="text-text-secondary text-xs leading-relaxed">
-                        <span class="text-text font-semibold">{item.highlight}:</span>{' '}
-                        {item.description}
-                      </p>
-                    </div>
-                  ))}
+                <div class="grid-col s-1 mb-4 grid gap-3 sm:grid-cols-2">
+                  {exp.list.items.map(
+                    (item: { highlight: string; description: string }, idx: number) => (
+                      <div class="border-border border p-3">
+                        <p class="text-accent mb-4 font-mono text-xs font-bold tracking-wider uppercase">
+                          &gt;&gt; {translation['ACHIEVEMENT']}_{idx + 1}
+                        </p>
+                        <p class="text-text-secondary text-xs leading-relaxed">
+                          <span class="text-text font-semibold">{item.highlight}:</span>{' '}
+                          {item.description}
+                        </p>
+                      </div>
+                    )
+                  )}
                 </div>
               )}
 
               {exp.skills?.length && (
                 <p class="text-text-secondary/50 mb-6 font-mono text-xs">
                   {translation['STACK']}:{' '}
-                  {exp.skills.map((s, idx) => (
+                  {exp.skills.map((s: { name: string }, idx: number) => (
                     <span>
                       {idx > 0 && <span class="text-text-secondary/30"> · </span>}
                       {s.name}
