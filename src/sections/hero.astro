@@ -98,7 +98,7 @@ const socialMedia = devsync.socialMedia ?? []
             />
           </div>
           {
-            ((profile as DevsyncObject).status?.status) && (
+            (profile as DevsyncObject).status?.status && (
               <span class="border-accent/40 text-accent flex w-full shrink-0 items-center justify-center gap-2 rounded border px-4 py-2 font-mono text-xs tracking-wider uppercase sm:w-auto">
                 <span class="bg-accent inline-block h-2 w-2 animate-pulse rounded-full shadow-[0_0_10px_var(--color-accent)]" />
                 {translation['Status']}: {(profile as DevsyncObject).status?.status}
