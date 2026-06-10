@@ -96,9 +96,9 @@ import figlet from 'figlet'
 import AsciiScramble from '@/components/ascii-scramble.astro'
 
 const asciiArt = await figlet.text(firstName, {
-  font: 'ANSI Regular',
-  width: 80,
-  whitespaceBreak: true,
+	font: 'ANSI Regular',
+	width: 80,
+	whitespaceBreak: true,
 })
 const asciiLines = asciiArt.split('\n')
 ```

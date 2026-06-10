@@ -10,66 +10,60 @@ const translation = translations[lang]
 ---
 
 {
-  Array.isArray(certifications) && certifications.length > 0 && (
-    <section id="certifications" class="m-auto w-full max-w-4xl px-6 py-16">
-      <SectionHeader title={translation['Certifications']} />
+	Array.isArray(certifications) && certifications.length > 0 && (
+		<section id="certifications" class="m-auto w-full max-w-4xl px-6 py-16">
+			<SectionHeader title={translation['Certifications']} />
 
-      <ul>
-        {certifications.map((cert, i) => (
-          <li>
-            <div class="border-accent/30 border-l-2 pl-6">
-              <div class="mb-2 flex flex-col sm:flex-row sm:items-start sm:justify-between">
-                <div class="flex items-center gap-2">
-                  <span class="text-accent text-sm">■</span>
-                  <h3 class="text-accent text-lg font-bold">{cert.name}</h3>
-                </div>
-                {cert.url && (
-                  <a
-                    href={cert.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-text-secondary hover:text-accent inline-flex items-center gap-1.5 text-xs font-medium underline underline-offset-4 transition-colors"
-                  >
-                    {translation['View Certificate']}
-                    <span class="text-accent/60">↗</span>
-                  </a>
-                )}
-              </div>
+			<ul>
+				{certifications.map((cert, i) => (
+					<li>
+						<div class="border-accent/30 border-l-2 pl-6">
+							<div class="mb-2 flex flex-col sm:flex-row sm:items-start sm:justify-between">
+								<div class="flex items-center gap-2">
+									<span class="text-accent text-sm">■</span>
+									<h3 class="text-accent text-lg font-bold">{cert.name}</h3>
+								</div>
+								{cert.url && (
+									<a
+										href={cert.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="text-text-secondary hover:text-accent inline-flex items-center gap-1.5 text-xs font-medium underline underline-offset-4 transition-colors"
+									>
+										{translation['View Certificate']}
+										<span class="text-accent/60">↗</span>
+									</a>
+								)}
+							</div>
 
-              {cert.list?.items?.length && (
-                <div class="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  {cert.list.items.map((item: { highlight: string; description: string }) => (
-                    <div class="border-border border p-3">
-                      <p class="text-accent mb-2 font-mono text-xs font-bold tracking-wider uppercase">
-                        &gt;&gt; {item.highlight}
-                      </p>
-                      {item.description && (
-                        <p class="text-text-secondary text-xs leading-relaxed">
-                          {item.description}
-                        </p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
+							{cert.list?.items?.length && (
+								<div class="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+									{cert.list.items.map((item: { highlight: string; description: string }) => (
+										<div class="border-border border p-3">
+											<p class="text-accent mb-2 font-mono text-xs font-bold tracking-wider uppercase">&gt;&gt; {item.highlight}</p>
+											{item.description && <p class="text-text-secondary text-xs leading-relaxed">{item.description}</p>}
+										</div>
+									))}
+								</div>
+							)}
 
-              {cert.skills?.length && (
-                <p class="text-text-secondary/50 font-mono text-xs">
-                  {translation['STACK']}:{' '}
-                  {cert.skills.map((s: { name: string }, idx: number) => (
-                    <span>
-                      {idx > 0 && <span class="text-text-secondary/30"> · </span>}
-                      {s.name}
-                    </span>
-                  ))}
-                </p>
-              )}
-            </div>
+							{cert.skills?.length && (
+								<p class="text-text-secondary/50 font-mono text-xs">
+									{translation['STACK']}:{' '}
+									{cert.skills.map((s: { name: string }, idx: number) => (
+										<span>
+											{idx > 0 && <span class="text-text-secondary/30"> · </span>}
+											{s.name}
+										</span>
+									))}
+								</p>
+							)}
+						</div>
 
-            {i < certifications.length - 1 && <hr class="border-border/30 my-6" />}
-          </li>
-        ))}
-      </ul>
-    </section>
-  )
+						{i < certifications.length - 1 && <hr class="border-border/30 my-6" />}
+					</li>
+				))}
+			</ul>
+		</section>
+	)
 }

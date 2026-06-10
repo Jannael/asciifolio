@@ -9,17 +9,17 @@ import Projects from '@/sections/projects.astro'
 import { languages } from '@core'
 
 export function getStaticPaths() {
-  return languages.map((lang) => ({
-    params: { lang },
-  }))
+	return languages.map((lang) => ({
+		params: { lang },
+	}))
 }
 ---
 
 <Layout>
-  <Hero />
-  <About />
-  <Experience />
-  <Projects />
-  <Education />
-  <Certifications />
+	<Hero />
+	<About />
+	<Experience />
+	<Projects />
+	<Education />
+	<Certifications />
 </Layout>

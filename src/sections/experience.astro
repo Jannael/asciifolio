@@ -11,90 +11,80 @@ const translation = translations[lang]
 ---
 
 {
-  Array.isArray(experience) && experience.length > 0 && (
-    <section id="experience" class="m-auto w-full max-w-4xl px-6 py-16">
-      <SectionHeader title={translation['Experience']} />
+	Array.isArray(experience) && experience.length > 0 && (
+		<section id="experience" class="m-auto w-full max-w-4xl px-6 py-16">
+			<SectionHeader title={translation['Experience']} />
 
-      <ul>
-        {experience.map((exp, i) => (
-          <li>
-            <div class="border-accent/30 border-l-2 pl-6">
-              <div class="mb-2 flex flex-col sm:flex-row sm:items-start sm:justify-between">
-                <div class="flex items-center gap-2">
-                  <span class="text-accent text-sm">■</span>
-                  <h3 class="text-accent text-lg font-bold">
-                    {exp.position}
-                    {exp.company && (
-                      <>
-                        {' '}
-                        <span class="text-text-secondary/50 font-normal">@</span>{' '}
-                        <span class="text-accent">{exp.company}</span>
-                      </>
-                    )}
-                  </h3>
-                </div>
-                {exp.date && (
-                  <span class="text-text-secondary/60 shrink-0 font-mono text-xs">
-                    [{exp.date}]
-                  </span>
-                )}
-              </div>
+			<ul>
+				{experience.map((exp, i) => (
+					<li>
+						<div class="border-accent/30 border-l-2 pl-6">
+							<div class="mb-2 flex flex-col sm:flex-row sm:items-start sm:justify-between">
+								<div class="flex items-center gap-2">
+									<span class="text-accent text-sm">■</span>
+									<h3 class="text-accent text-lg font-bold">
+										{exp.position}
+										{exp.company && (
+											<>
+												{' '}
+												<span class="text-text-secondary/50 font-normal">@</span> <span class="text-accent">{exp.company}</span>
+											</>
+										)}
+									</h3>
+								</div>
+								{exp.date && <span class="text-text-secondary/60 shrink-0 font-mono text-xs">[{exp.date}]</span>}
+							</div>
 
-              {exp.links?.length && (
-                <div class="mb-4 flex flex-wrap gap-3">
-                  {exp.links.map((link: { url: string; name: string }) => (
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="border-text-secondary/40 hover:border-accent hover:text-accent inline-flex items-center gap-1.5 border px-3 py-1.5 text-xs font-medium tracking-wide uppercase transition-colors"
-                    >
-                      {link.name}
-                      <span class="text-accent/60">↗</span>
-                    </a>
-                  ))}
-                </div>
-              )}
+							{exp.links?.length && (
+								<div class="mb-4 flex flex-wrap gap-3">
+									{exp.links.map((link: { url: string; name: string }) => (
+										<a
+											href={link.url}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="border-text-secondary/40 hover:border-accent hover:text-accent inline-flex items-center gap-1.5 border px-3 py-1.5 text-xs font-medium tracking-wide uppercase transition-colors"
+										>
+											{link.name}
+											<span class="text-accent/60">↗</span>
+										</a>
+									))}
+								</div>
+							)}
 
-              {exp.description && (
-                <p class="text-text-secondary mb-4 text-sm leading-relaxed">{exp.description}</p>
-              )}
+							{exp.description && <p class="text-text-secondary mb-4 text-sm leading-relaxed">{exp.description}</p>}
 
-              {exp.list?.items?.length && (
-                <div class="grid-col s-1 mb-4 grid gap-3 sm:grid-cols-2">
-                  {exp.list.items.map(
-                    (item: { highlight: string; description: string }, idx: number) => (
-                      <div class="border-border border p-3">
-                        <p class="text-accent mb-4 font-mono text-xs font-bold tracking-wider uppercase">
-                          &gt;&gt; {translation['ACHIEVEMENT']}_{idx + 1}
-                        </p>
-                        <p class="text-text-secondary text-xs leading-relaxed">
-                          <span class="text-text font-semibold">{item.highlight}:</span>{' '}
-                          {item.description}
-                        </p>
-                      </div>
-                    )
-                  )}
-                </div>
-              )}
+							{exp.list?.items?.length && (
+								<div class="grid-col s-1 mb-4 grid gap-3 sm:grid-cols-2">
+									{exp.list.items.map((item: { highlight: string; description: string }, idx: number) => (
+										<div class="border-border border p-3">
+											<p class="text-accent mb-4 font-mono text-xs font-bold tracking-wider uppercase">
+												&gt;&gt; {translation['ACHIEVEMENT']}_{idx + 1}
+											</p>
+											<p class="text-text-secondary text-xs leading-relaxed">
+												<span class="text-text font-semibold">{item.highlight}:</span> {item.description}
+											</p>
+										</div>
+									))}
+								</div>
+							)}
 
-              {exp.skills?.length && (
-                <p class="text-text-secondary/50 mb-6 font-mono text-xs">
-                  {translation['STACK']}:{' '}
-                  {exp.skills.map((s: { name: string }, idx: number) => (
-                    <span>
-                      {idx > 0 && <span class="text-text-secondary/30"> · </span>}
-                      {s.name}
-                    </span>
-                  ))}
-                </p>
-              )}
-            </div>
+							{exp.skills?.length && (
+								<p class="text-text-secondary/50 mb-6 font-mono text-xs">
+									{translation['STACK']}:{' '}
+									{exp.skills.map((s: { name: string }, idx: number) => (
+										<span>
+											{idx > 0 && <span class="text-text-secondary/30"> · </span>}
+											{s.name}
+										</span>
+									))}
+								</p>
+							)}
+						</div>
 
-            {i < experience.length - 1 && <hr class="border-border/30 my-6" />}
-          </li>
-        ))}
-      </ul>
-    </section>
-  )
+						{i < experience.length - 1 && <hr class="border-border/30 my-6" />}
+					</li>
+				))}
+			</ul>
+		</section>
+	)
 }

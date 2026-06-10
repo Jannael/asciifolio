@@ -1,3 +1,11 @@
 {
-  "cSpell.words": ["devsync", "jannael", "Asciifolio"]
+	"cSpell.words": ["devsync", "jannael", "Asciifolio"],
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true
 }

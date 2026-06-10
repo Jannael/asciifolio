@@ -15,11 +15,11 @@ const translation = translations[lang]
 const firstName = devsync.name?.split(' ')[0] || 'DEV'
 
 const asciiArt = await figlet.text(firstName, {
-  font: 'ANSI Regular',
-  horizontalLayout: 'default',
-  verticalLayout: 'default',
-  width: 80,
-  whitespaceBreak: true,
+	font: 'ANSI Regular',
+	horizontalLayout: 'default',
+	verticalLayout: 'default',
+	width: 80,
+	whitespaceBreak: true,
 })
 
 const asciiLines = asciiArt.split('\n').filter((line) => line.trim() !== '')
@@ -27,94 +27,83 @@ const socialMedia = devsync.socialMedia ?? []
 ---
 
 <section class="m-auto mt-10 w-full max-w-4xl px-4 sm:px-6">
-  <div class="terminal-window rounded-xl">
-    <div
-      class="bg-surface-bright border-border text-text-secondary flex items-center gap-2 rounded-tl-xl rounded-tr-xl border border-b px-4 py-3 text-xs select-none"
-    >
-      <span class="text-accent font-bold">&gt;</span>
-      <span class="min-w-0 flex-1 truncate">{translation['TERMINAL_TITLE']}</span>
-      <div class="flex items-center gap-2">
-        <LangSwitcher currentLang={lang} class="text-xs" />
-        <ThemeSwitcher />
-      </div>
-    </div>
+	<div class="terminal-window rounded-xl">
+		<div
+			class="bg-surface-bright border-border text-text-secondary flex items-center gap-2 rounded-tl-xl rounded-tr-xl border border-b px-4 py-3 text-xs select-none"
+		>
+			<span class="text-accent font-bold">&gt;</span>
+			<span class="min-w-0 flex-1 truncate">{translation['TERMINAL_TITLE']}</span>
+			<div class="flex items-center gap-2">
+				<LangSwitcher currentLang={lang} class="text-xs" />
+				<ThemeSwitcher />
+			</div>
+		</div>
 
-    <div class="terminal-content border-border border px-4 py-6 sm:p-8">
-      <div
-        class="relative mb-5 flex items-center justify-between gap-4 max-sm:flex max-sm:w-full max-sm:flex-col max-sm:items-center max-sm:gap-1"
-      >
-        <div
-          class="scale-0.5 flex flex-1 items-center justify-center overflow-x-hidden overflow-y-hidden max-sm:w-full max-sm:max-w-full sm:justify-start"
-        >
-          <AsciiFigure class="text-accent scale-[0.5] sm:scale-100">
-            <AsciiScramble lines={asciiLines} />
-          </AsciiFigure>
-        </div>
-        {
-          devsync.img && (
-            <div class="shrink-0 max-sm:-order-1 max-sm:mb-1">
-              <div class="relative">
-                <div class="bg-accent/30 absolute -inset-1 rounded-full blur-md" />
-                <img
-                  src={devsync.img}
-                  alt={devsync.name}
-                  class="border-accent relative z-10 h-20 w-20 rounded-full border-2 object-cover max-sm:h-24 max-sm:w-24 sm:h-28 sm:w-28"
-                  width="96"
-                  height="96"
-                  loading="eager"
-                />
-              </div>
-            </div>
-          )
-        }
-      </div>
+		<div class="terminal-content border-border border px-4 py-6 sm:p-8">
+			<div class="relative mb-5 flex items-center justify-between gap-4 max-sm:flex max-sm:w-full max-sm:flex-col max-sm:items-center max-sm:gap-1">
+				<div
+					class="scale-0.5 flex flex-1 items-center justify-center overflow-x-hidden overflow-y-hidden max-sm:w-full max-sm:max-w-full sm:justify-start"
+				>
+					<AsciiFigure class="text-accent scale-[0.5] sm:scale-100">
+						<AsciiScramble lines={asciiLines} />
+					</AsciiFigure>
+				</div>
+				{
+					devsync.img && (
+						<div class="shrink-0 max-sm:-order-1 max-sm:mb-1">
+							<div class="relative">
+								<div class="bg-accent/30 absolute -inset-1 rounded-full blur-md" />
+								<img
+									src={devsync.img}
+									alt={devsync.name}
+									class="border-accent relative z-10 h-20 w-20 rounded-full border-2 object-cover max-sm:h-24 max-sm:w-24 sm:h-28 sm:w-28"
+									width="96"
+									height="96"
+									loading="eager"
+								/>
+							</div>
+						</div>
+					)
+				}
+			</div>
 
-      <div class="border-border/50 border-t border-dashed pt-6">
-        <h2
-          class="text-text-secondary font-mono text-sm tracking-[0.2em] uppercase max-sm:text-center sm:text-base"
-        >
-          {profile.jobTitle}
-        </h2>
+			<div class="border-border/50 border-t border-dashed pt-6">
+				<h2 class="text-text-secondary font-mono text-sm tracking-[0.2em] uppercase max-sm:text-center sm:text-base">
+					{profile.jobTitle}
+				</h2>
 
-        <div
-          class="mt-6 flex items-center justify-between gap-3 max-sm:w-full max-sm:flex-col max-sm:items-center"
-        >
-          <div class="flex w-full flex-col flex-wrap items-center gap-5 sm:flex-row sm:gap-3">
-            {
-              socialMedia.map((social) => (
-                <Badge
-                  name={social.name ?? ''}
-                  url={social.url ?? ''}
-                  icon={social.icon ?? ''}
-                  class="flex w-full items-center justify-center"
-                />
-              ))
-            }
-            <Badge
-              name={translation['CV']}
-              url={'/' + devsync.name + '-' + lang + '.pdf'}
-              icon="/icons/cv.svg"
-              class="flex w-full items-center justify-center"
-            />
-          </div>
-          {
-            (profile as DevsyncObject).status?.status && (
-              <span class="border-accent/40 text-accent flex w-full shrink-0 items-center justify-center gap-2 rounded border px-4 py-2 font-mono text-xs tracking-wider uppercase sm:w-auto">
-                <span class="bg-accent inline-block h-2 w-2 animate-pulse rounded-full shadow-[0_0_10px_var(--color-accent)]" />
-                {translation['Status']}: {(profile as DevsyncObject).status?.status}
-              </span>
-            )
-          }
-        </div>
-      </div>
-    </div>
-  </div>
+				<div class="mt-6 flex items-center justify-between gap-3 max-sm:w-full max-sm:flex-col max-sm:items-center">
+					<div class="flex w-full flex-col flex-wrap items-center gap-5 sm:flex-row sm:gap-3">
+						{
+							socialMedia.map((social) => (
+								<Badge name={social.name ?? ''} url={social.url ?? ''} icon={social.icon ?? ''} class="flex w-full items-center justify-center" />
+							))
+						}
+						<Badge
+							name={translation['CV']}
+							url={'/' + devsync.name + '-' + lang + '.pdf'}
+							icon="/icons/cv.svg"
+							class="flex w-full items-center justify-center"
+						/>
+					</div>
+					{
+						(profile as DevsyncObject).status?.status && (
+							<span class="border-accent/40 text-accent flex w-full shrink-0 items-center justify-center gap-2 rounded border px-4 py-2 font-mono text-xs tracking-wider uppercase sm:w-auto">
+								<span class="bg-accent inline-block h-2 w-2 animate-pulse rounded-full shadow-[0_0_10px_var(--color-accent)]" />
+								{translation['Status']}: {(profile as DevsyncObject).status?.status}
+							</span>
+						)
+					}
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 
 <style>
-  .terminal-window {
-    box-shadow:
-      0 0 30px color-mix(in srgb, var(--color-accent) 15%, transparent),
-      inset 0 0 80px color-mix(in srgb, var(--color-accent) 5%, transparent);
-  }
+	.terminal-window {
+		box-shadow:
+			0 0 30px color-mix(in srgb, var(--color-accent) 15%, transparent),
+			inset 0 0 80px color-mix(in srgb, var(--color-accent) 5%, transparent);
+	}
 </style>
