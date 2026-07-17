@@ -19,7 +19,7 @@ CI auto-generates CV/README/LinkedIn artifacts on every `DEVSYNC.json` push via 
 
 ```
 src/
-├── components/       # badge, info-card, navbar, project-card, timeline-item
+├── components/       # badge, info-card, project-card, timeline-item
 ├── layouts/          # layout.astro (SEO, structured data, theme toggle)
 ├── pages/            # index.astro (root redirect), [lang]/index.astro, [lang]/cv.astro
 ├── sections/         # hero, experience, projects, education, certifications, footer, lang-switcher, theme-switcher
