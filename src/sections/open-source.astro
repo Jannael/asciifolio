@@ -1,0 +1,26 @@
+---
+import devsync from '@core'
+import { defaultLang } from '@core'
+import { translations, type availableLangsType, getLangData } from '@core'
+import SectionHeader from '@/components/section-header.astro'
+import ProjectCard from '@/components/project-card.astro'
+
+const lang = (Astro.params.lang || defaultLang).toLowerCase() as availableLangsType
+const profile = getLangData(devsync, lang)
+const openSource = profile.openSource ?? []
+const translation = translations[lang]
+---
+
+{
+	Array.isArray(openSource) && openSource.length > 0 && (
+		<section id="open-source" class="m-auto w-full max-w-4xl px-6 py-16">
+			<SectionHeader title={translation['Open Source']} />
+
+			<div class="space-y-12">
+				{openSource.map((project) => (
+					<ProjectCard {...project} />
+				))}
+			</div>
+		</section>
+	)
+}
