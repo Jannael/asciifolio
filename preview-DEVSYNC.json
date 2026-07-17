@@ -1,8 +1,7 @@
 {
 	"defaultLang": "en",
-	"site": "https://asciifolio.pages.dev",
+	"site": "https://preview.devsync.work",
 	"name": "Jannael Orlando",
-	"department": "Core system",
 	"img": "https://avatars.githubusercontent.com/u/177653963?v=4",
 	"socialMedia": [
 		{
@@ -20,7 +19,7 @@
 	],
 	"githubUserName": "Jannael",
 	"address": "Your City, Country",
-	"coreSkills": ["JavaScript", "TypeScript", "Node.js"],
+	"coreSkills": ["Developer Experience", "Performance Optimization", "Product Quality"],
 	"email": "your-email@example.com",
 	"phone": "+1 123 456 7890",
 	"en": {
@@ -210,6 +209,94 @@
 						"name": "Tailwind CSS",
 						"mdBadge": "![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?logo=tailwindcss&logoColor=white)",
 						"icon": "https://cdn.simpleicons.org/tailwindcss"
+					}
+				]
+			}
+		],
+		"openSource": [
+			{
+				"name": "Devsync Core",
+				"img": "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=400&h=200&fit=crop",
+				"web": "https://github.com/jannael/devsync",
+				"links": [
+					{
+						"name": "GitHub",
+						"url": "https://github.com/jannael/devsync",
+						"mdBadge": "![GitHub Repo](https://img.shields.io/badge/Repo-GitHub-181717?logo=github&logoColor=white)",
+						"icon": "/icons/github.svg"
+					},
+					{
+						"name": "Contributors",
+						"url": "https://github.com/jannael/devsync/graphs/contributors",
+						"mdBadge": "![Contributors](https://img.shields.io/badge/Contributors-Welcome-339933?logo=github&logoColor=white)",
+						"icon": "https://cdn.simpleicons.org/github"
+					}
+				],
+				"description": "The open-source engine behind Devsync — a community-driven toolkit for generating portfolios from a single JSON file.",
+				"list": {
+					"title": "project-highlights",
+					"items": [
+						{
+							"highlight": "Community Contributions",
+							"description": "Merged PRs from 12+ contributors across i18n, accessibility, and theming improvements."
+						},
+						{
+							"highlight": "Plugin System",
+							"description": "Extensible architecture lets maintainers add new output formats without touching the core build."
+						}
+					]
+				},
+				"skills": [
+					{
+						"name": "Astro",
+						"mdBadge": "![Astro](https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=white)",
+						"icon": "https://cdn.simpleicons.org/astro"
+					},
+					{
+						"name": "TypeScript",
+						"mdBadge": "![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)",
+						"icon": "https://cdn.simpleicons.org/typescript"
+					}
+				]
+			},
+			{
+				"name": "Astro i18n Helpers",
+				"img": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=400&h=200&fit=crop",
+				"web": "https://github.com/jannael/astro-i18n-helpers",
+				"links": [
+					{
+						"name": "GitHub",
+						"url": "https://github.com/jannael/astro-i18n-helpers",
+						"mdBadge": "![GitHub Repo](https://img.shields.io/badge/Repo-GitHub-181717?logo=github&logoColor=white)",
+						"icon": "/icons/github.svg"
+					},
+					{
+						"name": "npm",
+						"url": "https://npmjs.com/package/@jannael/astro-i18n-helpers",
+						"mdBadge": "![npm](https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white)",
+						"icon": "https://cdn.simpleicons.org/npm"
+					}
+				],
+				"description": "A lightweight library that simplifies prefix-based routing and locale fallbacks for Astro projects.",
+				"list": {
+					"title": "project-highlights",
+					"items": [
+						{
+							"highlight": "Zero-Config Routing",
+							"description": "Auto-detects available locales and generates redirect rules with no manual configuration."
+						}
+					]
+				},
+				"skills": [
+					{
+						"name": "Astro",
+						"mdBadge": "![Astro](https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=white)",
+						"icon": "https://cdn.simpleicons.org/astro"
+					},
+					{
+						"name": "Zod",
+						"mdBadge": "![Zod](https://img.shields.io/badge/Zod-3E67B1?logo=zod&logoColor=white)",
+						"icon": "https://cdn.simpleicons.org/zod"
 					}
 				]
 			}
@@ -453,6 +540,94 @@
 						"name": "Tailwind CSS",
 						"mdBadge": "![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?logo=tailwindcss&logoColor=white)",
 						"icon": "https://cdn.simpleicons.org/tailwindcss"
+					}
+				]
+			}
+		],
+		"openSource": [
+			{
+				"name": "Devsync Core",
+				"img": "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=400&h=200&fit=crop",
+				"web": "https://github.com/jannael/devsync",
+				"links": [
+					{
+						"name": "GitHub",
+						"url": "https://github.com/jannael/devsync",
+						"mdBadge": "![Repositorio GitHub](https://img.shields.io/badge/Repo-GitHub-181717?logo=github&logoColor=white)",
+						"icon": "https://cdn.simpleicons.org/github"
+					},
+					{
+						"name": "Contribuidores",
+						"url": "https://github.com/jannael/devsync/graphs/contributors",
+						"mdBadge": "![Contribuidores](https://img.shields.io/badge/Contribuidores-Bienvenidos-339933?logo=github&logoColor=white)",
+						"icon": "https://cdn.simpleicons.org/github"
+					}
+				],
+				"description": "El motor open-source detrás de Devsync — un toolkit comunitario para generar portafolios desde un único archivo JSON.",
+				"list": {
+					"title": "puntos-destacados-del-proyecto",
+					"items": [
+						{
+							"highlight": "Contribuciones de la Comunidad",
+							"description": "PRs fusionados de más de 12 contribuidores en i18n, accesibilidad y mejoras de theming."
+						},
+						{
+							"highlight": "Sistema de Plugins",
+							"description": "Arquitectura extensible que permite a los mantenedores añadir nuevos formatos de salida sin tocar el core."
+						}
+					]
+				},
+				"skills": [
+					{
+						"name": "Astro",
+						"mdBadge": "![Astro](https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=white)",
+						"icon": "https://cdn.simpleicons.org/astro"
+					},
+					{
+						"name": "TypeScript",
+						"mdBadge": "![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)",
+						"icon": "https://cdn.simpleicons.org/typescript"
+					}
+				]
+			},
+			{
+				"name": "Astro i18n Helpers",
+				"img": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=400&h=200&fit=crop",
+				"web": "https://github.com/jannael/astro-i18n-helpers",
+				"links": [
+					{
+						"name": "GitHub",
+						"url": "https://github.com/jannael/astro-i18n-helpers",
+						"mdBadge": "![Repositorio GitHub](https://img.shields.io/badge/Repo-GitHub-181717?logo=github&logoColor=white)",
+						"icon": "https://cdn.simpleicons.org/github"
+					},
+					{
+						"name": "npm",
+						"url": "https://npmjs.com/package/@jannael/astro-i18n-helpers",
+						"mdBadge": "![npm](https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white)",
+						"icon": "https://cdn.simpleicons.org/npm"
+					}
+				],
+				"description": "Una librería ligera que simplifica el enrutamiento por prefijo y los fallbacks de locale para proyectos Astro.",
+				"list": {
+					"title": "puntos-destacados-del-proyecto",
+					"items": [
+						{
+							"highlight": "Enrutamiento sin Configuración",
+							"description": "Detecta automáticamente los locales disponibles y genera reglas de redirección sin configuración manual."
+						}
+					]
+				},
+				"skills": [
+					{
+						"name": "Astro",
+						"mdBadge": "![Astro](https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=white)",
+						"icon": "https://cdn.simpleicons.org/astro"
+					},
+					{
+						"name": "Zod",
+						"mdBadge": "![Zod](https://img.shields.io/badge/Zod-3E67B1?logo=zod&logoColor=white)",
+						"icon": "https://cdn.simpleicons.org/zod"
 					}
 				]
 			}
