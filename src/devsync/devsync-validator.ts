@@ -63,6 +63,18 @@ const projectSchema = z
 	})
 	.partial()
 
+const openSourceSchema = z
+	.object({
+		name: z.string({ message: 'Open source project name is required' }),
+		img: z.string({ message: 'Image is required' }),
+		web: z.string({ message: 'Web is required' }),
+		links: z.array(linkSchema),
+		description: z.string({ message: 'Description is required' }),
+		list: ListSchema,
+		skills: z.array(skillsSchema),
+	})
+	.partial()
+
 const educationSchema = z
 	.object({
 		name: z.string({ message: 'Institution name is required' }),
@@ -96,6 +108,7 @@ export const devsyncObjectSchema = z
 		projects: z.array(projectSchema),
 		education: z.array(educationSchema),
 		certifications: z.array(certificationSchema),
+		openSource: z.array(openSourceSchema),
 	})
 	.partial()
 
@@ -119,7 +132,6 @@ export type Skills = z.infer<typeof skillsSchema>
 export type ListSchema = z.infer<typeof ListSchema>
 export type Devsync = z.infer<typeof devsyncSchema>
 export const devsyncSchemaPartial = devsyncSchema.partial()
-export type DevsyncObject = z.infer<typeof devsyncObjectSchema>
 export type DevsyncPartial = z.infer<typeof devsyncSchemaPartial>
 
 export const parseDevsync = (devsync: unknown): DevsyncPartial => devsyncSchemaPartial.safeParse(devsync).data ?? {}
